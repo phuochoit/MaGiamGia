@@ -1,0 +1,25 @@
+{
+    "expo": {
+        "name": "ma-giam-gia",
+        "description": "An empty new project",
+        "slug": "ma-giam-gia",
+        "privacy": "public",
+        "sdkVersion": "21.0.0",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "primaryColor": "#cccccc",
+        "icon": "./assets/icons/app-icon.png",
+        "loading": {
+            "icon": "./assets/icons/app-icon.png"
+        },
+        "packagerOpts": {
+            "assetExts": [
+                "ttf",
+                "mp4"
+            ]
+        },
+        "ios": {
+            "supportsTablet": true
+        }
+    }
+}
