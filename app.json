@@ -1,16 +1,21 @@
 {
     "expo": {
-        "name": "ma-giam-gia",
-        "description": "An empty new project",
+        "name": "Mã Giảm Giá",
+        "description": "Cập nhật mã giảm giá zalora, voucher lazada khuyến mãi, coupon Tiki, Cdiscount, Mytour.. các trang web lớn ở VN, chia sẻ kinh nghiệm mua hàng online",
         "slug": "ma-giam-gia",
         "privacy": "public",
         "sdkVersion": "21.0.0",
-        "version": "1.0.0",
-        "orientation": "portrait",
+        "version": "1.0.2",
+        "orientation": "default",
         "primaryColor": "#cccccc",
+        "androidStatusBarColor": "#334393",
+        "androidStatusBar": {
+            "barStyle": "light-content",
+            "backgroundColor": "#334393"
+        },
         "icon": "./assets/icons/app-icon.png",
         "loading": {
-            "icon": "./assets/icons/app-icon.png"
+            "icon": "./assets/icons/loading-icon.png"
         },
         "packagerOpts": {
             "assetExts": [
@@ -20,6 +25,10 @@
         },
         "ios": {
             "supportsTablet": true
+        },
+        "android": {
+            "package": "com.phuocho.magiamgia"
         }
     }
 }
+

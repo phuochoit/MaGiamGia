@@ -1,15 +1,17 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from "./src/redux/store";
-import Home from "./src/components/"
 import { AppLoading } from 'expo';
+import { Provider } from 'react-redux';
+
+import store from "./src/redux/store";
+import HomeApp from "./src/components/"
 
 export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            isReady: false
+            isReady: false,
         };
+
     }
     async componentWillMount() {
         await Expo.Font.loadAsync({
@@ -25,7 +27,7 @@ export default class App extends React.Component {
         }
         return (
             <Provider store={store}>
-                <Home />
+                <HomeApp />
             </Provider>
         );
     }
