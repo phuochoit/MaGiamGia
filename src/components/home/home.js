@@ -1,10 +1,10 @@
 import React from "react";
-import { FlatList, Image, RefreshControl, TouchableOpacity} from "react-native";
-import { Container, Body, Content, Header, Title, Text, View } from "native-base";
+import { FlatList, TouchableOpacity} from "react-native";
+import { Container, Body, Content, Header, Title, Text, View, Thumbnail } from "native-base";
 import { connect } from "react-redux";
-// import { StackNavigator } from "react-navigation";
-import { fetchDataThunk } from "../redux/actions/fechActions"
-import styles from "../../assets/css/styles";
+
+import { fetchDataThunk } from "../../redux/actions/fechActions"
+import styles from "../../../assets/css/styles";
 
 class Home extends React.Component {
     constructor(props) {
@@ -20,7 +20,11 @@ class Home extends React.Component {
     
     _onRefresh(){
         this.setState({
-            refreshing: true
+            refreshing: true,
+        });
+        this.props.fetchDataThunk(this.props.apiurl, "Home");
+        this.setState({
+            refreshing: false
         });
     }
     render() {
@@ -31,7 +35,7 @@ class Home extends React.Component {
             <Container>
                 <Header backgroundColor="#00AA8D" androidStatusBarColor='#008975'>
                     <Body style={[styles.flex1, styles.headerBody]}>
-                        <Title>Mã giám giá Tháng {month}</Title>
+                        <Title>Mã giám giá tháng {month}</Title>
                     </Body>
                 </Header>
                 <Content padder style={[styles.flex1]}>
@@ -40,21 +44,21 @@ class Home extends React.Component {
                         renderItem={
                             ({ item }) => (
                                 <TouchableOpacity 
-                                    style={{padding:20}}
-                                    onPress={() => { alert(item.name)}}
+                                    style={{ padding: 5, marginBottom: 15, flex: 1}}
+                                    onPress={() => { navigate('Detail', { url: item.url, name: item.name})}}
                                     >
-                                    <Image source={{ uri: item.image }} style={{ height: 100, width: null, flex: 1 }} />
-                                    <Text>{item.name}</Text>
+                                    <View style={{flex:1}}>
+                                        <Thumbnail square source={{ uri: item.image }} style={[styles.imagehome]} />
+                                        <Text>{item.name}</Text>
+                                    </View>
                                 </TouchableOpacity>
                             )   
                         }
                         keyExtractor={item => item.id}
-                        refreshControl={
-                            <RefreshControl
-                                refreshing={this.state.refreshing}
-                                onRefresh={this._onRefresh.bind(this)}
-                            />
-                        }
+                        refreshing={this.state.refreshing}
+                        onRefresh={this._onRefresh.bind(this)}
+                        horizontal={false}
+                        numColumns={2}
                     />
                 </Content>
             </Container>

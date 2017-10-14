@@ -1,5 +1,5 @@
 import { FETCH_SUCCESS, START_FETCH, FETCH_ERROR} from "./types";
-import getData from "../../api";
+import {getData} from "../../api";
 
 export function startFetchData(){
     return {

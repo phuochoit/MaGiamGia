@@ -2,7 +2,7 @@ import React from 'react';
 import { TabNavigator } from "react-navigation";
 import { Button, Text, Footer, FooterTab, Icon } from "native-base";
 
-import Home from "./home";
+import HomeNav  from "./home";
 import Guide from "./guide";
 import Gift from "./gift";
 import News from "./news";
@@ -10,9 +10,11 @@ import News from "./news";
 // import style app
 import styles from "../../assets/css/styles";
 
+
+
 export default (HomeApp = TabNavigator(
     {
-        home: { screen: Home },
+        home: { screen: HomeNav },
         news: { screen: News },
         gift: { screen: Gift },
         guide: { screen: Guide },
