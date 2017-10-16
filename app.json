@@ -5,7 +5,7 @@
         "slug": "ma-giam-gia",
         "privacy": "public",
         "sdkVersion": "21.0.0",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "orientation": "default",
         "primaryColor": "#cccccc",
         "androidStatusBarColor": "#334393",
@@ -27,7 +27,7 @@
             "supportsTablet": true
         },
         "android": {
-            "package": "com.phuocho.magiamgia"
+            "package": "com.phuochoit.magiamgia"
         }
     }
 }

@@ -1,9 +1,14 @@
 import React from "react";
 import { FlatList, TouchableOpacity} from "react-native";
-import { Container, Body, Content, Header, Title, Text, View, Thumbnail } from "native-base";
+import { Container, Text, View, Thumbnail, Grid, Card, CardItem } from "native-base";
 import { connect } from "react-redux";
+import { capitalize } from "lodash";
 
-import { fetchDataThunk } from "../../redux/actions/fechActions"
+// import { fetchDataThunk } from "../../redux/actions/fechActions";
+import Isloading from "../isloading";
+import HeaderApp from "../header";
+import { getData } from "../../api";
+
 import styles from "../../../assets/css/styles";
 
 class Home extends React.Component {
@@ -11,56 +16,71 @@ class Home extends React.Component {
         super(props);
         this.state = {
             refreshing: false,
+            isReady: false,
+            data: [],
+            
         };
+
     }
     componentWillMount() {
-        const { apiurl } = this.props;
-        this.props.fetchDataThunk(apiurl,"Home");
+        getData(this.props.apiurl).then((temp) => {
+            this.setState({
+                data: temp,
+                isReady: true
+            });
+        });        
     }
     
     _onRefresh(){
         this.setState({
             refreshing: true,
         });
-        this.props.fetchDataThunk(this.props.apiurl, "Home");
-        this.setState({
-            refreshing: false
+
+        getData(this.props.apiurl).then((temp) => {
+            this.setState({
+                data: temp,
+                refreshing: false
+            });
         });
+
     }
     render() {
         const { navigate } = this.props.navigation;
-        const { data , month } = this.props;
-        
+        const {  month } = this.props;
+        const title_menu = "Mã giám giá tháng "+ month ;
+        if (!this.state.isReady) {
+            return (<Isloading />);
+        }
         return (
             <Container>
-                <Header backgroundColor="#00AA8D" androidStatusBarColor='#008975'>
-                    <Body style={[styles.flex1, styles.headerBody]}>
-                        <Title>Mã giám giá tháng {month}</Title>
-                    </Body>
-                </Header>
-                <Content padder style={[styles.flex1]}>
-                    <FlatList
-                        data={data.home}
-                        renderItem={
-                            ({ item }) => (
-                                <TouchableOpacity 
-                                    style={{ padding: 5, marginBottom: 15, flex: 1}}
-                                    onPress={() => { navigate('Detail', { url: item.url, name: item.name})}}
-                                    >
-                                    <View style={{flex:1}}>
-                                        <Thumbnail square source={{ uri: item.image }} style={[styles.imagehome]} />
-                                        <Text>{item.name}</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            )   
-                        }
-                        keyExtractor={item => item.id}
-                        refreshing={this.state.refreshing}
-                        onRefresh={this._onRefresh.bind(this)}
-                        horizontal={false}
-                        numColumns={2}
-                    />
-                </Content>
+                <HeaderApp navigation={this.props.navigation} menuleft="0" menuright="0" menutitle={title_menu} /> 
+                <FlatList
+                    style={{ marginVertical: 10 }}
+                    data={this.state.data}
+                    renderItem={
+                        ({ item }) => (
+                            
+                            <Grid style={{ marginHorizontal: 5 }}>
+                                <Card>
+                                    <CardItem>
+                                        <TouchableOpacity
+                                            onPress={() => { navigate('Detail', { url: item.url, name: capitalize(item.name) }) }} >
+                                            <View style={{ flex: 1 }}>
+                                                <Thumbnail square source={{ uri: item.image }} style={[styles.imagehome]} />
+                                                <Text>{capitalize(item.name)}</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </CardItem>
+                                </Card>
+                            </Grid>
+                        )
+                    }
+                    keyExtractor={item => item.id}
+                    refreshing={this.state.refreshing}
+                    onRefresh={this._onRefresh.bind(this)}
+                    horizontal={false}
+                    numColumns={2}
+                />
             </Container>
         );
     }
@@ -69,9 +89,8 @@ class Home extends React.Component {
 function mapStateToProps(state) {
     return {
         apiurl: state.ApiUrl,
-        data: state.DataHome,
         month: state.today.month
     };
 }
 
-export default connect(mapStateToProps, {fetchDataThunk})(Home);
+export default connect(mapStateToProps)(Home);

@@ -1,7 +1,8 @@
 import React from "react";
-import { AppRegistry, View, StatusBar } from "react-native";
-import { Container, Body, Content, Header, Left, Right, Icon, Title, Input, Item, Label, Button, Text } from "native-base";
+import { } from "react-native";
+import { Container, Content} from "native-base";
 
+import HeaderApp from "./header";
 import styles from "../../assets/css/styles";
 
 class Gift extends React.Component {
@@ -9,13 +10,7 @@ class Gift extends React.Component {
         const { navigate } = this.props.navigation;
         return (
             <Container>
-                <Header backgroundColor="#00AA8D" androidStatusBarColor='#008975'>
-                    <Left style={[styles.flex1]} />
-                    <Body style={[styles.flex1, styles.headerBody]}>
-                        <Title>Quà Tặng</Title>
-                    </Body>
-                    <Right style={[styles.flex1]} />
-                </Header>
+                <HeaderApp navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Quà Tặng" /> 
                 <Content padder style={[styles.flex1]}>
 
                 </Content>

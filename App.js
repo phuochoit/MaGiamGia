@@ -1,4 +1,5 @@
 import React from 'react';
+import { Root } from "native-base";
 import { AppLoading } from 'expo';
 import { Provider } from 'react-redux';
 
@@ -27,7 +28,9 @@ export default class App extends React.Component {
         }
         return (
             <Provider store={store}>
-                <HomeApp />
+                <Root>
+                    <HomeApp />
+                </Root>
             </Provider>
         );
     }

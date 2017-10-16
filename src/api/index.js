@@ -9,7 +9,7 @@ import { get, post } from "axios";
 export function getData(URL) {
     return get(URL)
         .then(response => response.data)
-        .catch(error => error);
+        .catch(error => console.log(error));
 }
 
 /**
