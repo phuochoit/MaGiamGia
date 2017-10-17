@@ -3,9 +3,9 @@ import { TabNavigator } from "react-navigation";
 import { Button, Text, Footer, FooterTab, Icon } from "native-base";
 
 import HomeNav  from "./home";
+import ReviewNav from "./review";
+import CouponsNav from "./coupons";
 import GuideNav from "./guide";
-import Gift from "./gift";
-import NewsNav from "./news";
 
 // import style app
 import styles from "../../assets/css/styles";
@@ -13,8 +13,8 @@ import styles from "../../assets/css/styles";
 export default (HomeApp = TabNavigator(
     {
         home: { screen: HomeNav },
-        news: { screen: NewsNav },
-        gift: { screen: Gift },
+        review: { screen: ReviewNav },
+        coupons: { screen: CouponsNav },
         guide: { screen: GuideNav },
     },
     {
@@ -33,16 +33,16 @@ export default (HomeApp = TabNavigator(
                         <Button
                             vertical
                             active={props.navigationState.index === 1}
-                            onPress={() => props.navigation.navigate("news")}>
+                            onPress={() => props.navigation.navigate("review")}>
                             <Icon name="home" />
-                            <Text style={[styles.fontsizemenu]}>Tin Tức</Text>
+                            <Text style={[styles.fontsizemenu]}>Review</Text>
                         </Button>
                         <Button
                             vertical
                             active={props.navigationState.index === 2}
-                            onPress={() => props.navigation.navigate("gift")}>
+                            onPress={() => props.navigation.navigate("coupons")}>
                             <Icon name="home" />
-                            <Text style={[styles.fontsizemenu]}>Quà Tặng</Text>
+                            <Text style={[styles.fontsizemenu]}>Coupons</Text>
                         </Button>
                         <Button
                             vertical

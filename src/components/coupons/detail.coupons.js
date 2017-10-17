@@ -9,7 +9,7 @@ import { getDataByParams } from "../../api";
 
 import styles from "../../../assets/css/styles";
 
-class DetailGuide extends React.Component {
+class DetailCoupons extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,8 +21,9 @@ class DetailGuide extends React.Component {
     componentWillMount() {
         const { state } = this.props.navigation;
         const param = { url: state.params.url}
-        getDataByParams(this.props.apiurl+'getDetail.php', param).then(
+        getDataByParams(this.props.apiurl + 'getDetail.php', param).then(
             (temp) => {
+                console.log(temp);
                 this.setState({
                     data: temp,
                     isReady: true,
@@ -37,7 +38,7 @@ class DetailGuide extends React.Component {
         }
         return(
             <Container>
-                <HeaderApp navigation={this.props.navigation} menuleft="1" menuright="1" menutitle="Hướng Dẫn" />
+                <HeaderApp navigation={this.props.navigation} menuleft="1" menuright="1" menutitle="Coupons" />
                 <Grid style={{ marginHorizontal: 5, marginVertical:10 }}>
                     <Card style={[styles.flex1]}>
                         <CardItem header style={{ paddingBottom: 0 }}>
@@ -46,6 +47,8 @@ class DetailGuide extends React.Component {
                         <CardItem style={[styles.flex1]}>
                             <WebView
                                 source={{ html: this.state.data }}
+                                startInLoadingState={true}
+                                scalesPageToFit={true}
                             />
                         </CardItem>
                     </Card>
@@ -62,4 +65,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps) (DetailGuide);
+export default connect(mapStateToProps)(DetailCoupons);

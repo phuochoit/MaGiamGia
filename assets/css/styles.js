@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions ,Image} from "react-native";
 
 const { width, height } = Dimensions.get("window");
 const logowidth = (width / 2) - 20;
@@ -31,7 +31,13 @@ const styles = StyleSheet.create({
     },
     imagehome: {
         width: logowidth,
-        height: logowidth / 2
+        height: logowidth / 2,
+        resizeMode: Image.resizeMode.contain
+    },
+    imagefullwidth: {
+        width: width,
+        height: logowidth / 2,
+        resizeMode: Image.resizeMode.contain
     },
     contentCenter: {
         flex: 1,
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
         height: null
     },
     tile: {
-        color: "#ec5c54"
+        color: "#ED1C24"
     },
     textColor: {
         color: "#333"
@@ -63,7 +69,7 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     font18: {
-        fontSize: 18
+        fontSize: 18,
     }
 });
 

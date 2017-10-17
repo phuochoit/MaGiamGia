@@ -6,7 +6,7 @@ import { concat, isUndefined } from "lodash";
 
 import HeaderApp from "../header";
 import Isloading from "../isloading";
-import { getData } from "../../api";
+import { getDataByParams } from "../../api";
 import styles from "../../../assets/css/styles";
 
 class Guide extends React.Component {
@@ -20,7 +20,8 @@ class Guide extends React.Component {
         };
     }
     componentWillMount() {
-        getData(this.props.apiurl + 'getListTutorial.php?page=' + this.state.page).then((temp) => {
+        let url = { url: this.props.weburl + "huong-dan/page/1" };
+        getDataByParams(this.props.apiurl + 'getListTutorial.php', url).then((temp) => {
             if (!isUndefined(temp)) {
                 this.setState({
                     data: temp,
@@ -36,7 +37,8 @@ class Guide extends React.Component {
         this.setState({
             refreshing: true,
         });
-        getData(this.props.apiurl + 'getListTutorial.php?page=1').then((temp) => {
+        let url = { url: this.props.weburl + "huong-dan/page/1"};
+        getDataByParams(this.props.apiurl + 'getListTutorial.php', url).then((temp) => {
             if (!isUndefined(temp)) {
                 this.setState({
                     data: temp,
@@ -48,7 +50,8 @@ class Guide extends React.Component {
         
     }
     _onEndReached() {
-        getData(this.props.apiurl + 'getListTutorial.php?page=' + this.state.page).then((temp) => {
+        let url = { url: this.props.weburl + "huong-dan/page/" + this.state.page };
+        getDataByParams(this.props.apiurl + 'getListTutorial.php', url).then((temp) => {
             if (!isUndefined(temp)) {
                 this.setState({
                     data: concat(this.state.data, temp),
@@ -77,15 +80,15 @@ class Guide extends React.Component {
                                         onPress={() => { navigate('DetailGuide', { url: item.url, title: item.title }) }}
                                     >
                                         <CardItem header>
-                                            <H3 style={{ color: "#ED1C24" }}>{item.title}</H3>
+                                            <H3 style={[styles.tile]}>{item.title}</H3>
                                         </CardItem>
                                         <CardItem cardBody>
-                                            <Image source={{ uri: item.thumbnail }} style={{ height: 200, width: null, flex: 1 }} />
+                                            <Image source={{ uri: item.thumbnail }} style={[styles.imagefullwidth]} />
                                         </CardItem>
                                         <CardItem footer>
                                             <Text>
                                                 {item.content}
-                                                <Text style={{ color: "#ED1C24" }}>[Xem tiếp]</Text>
+                                                <Text style={[styles.tile]}>[Xem tiếp]</Text>
                                             </Text>
                                         </CardItem>
                                     </TouchableOpacity>
@@ -107,6 +110,7 @@ class Guide extends React.Component {
 function mapStateToProps(state) {
     return {
         apiurl: state.ApiUrl,
+        weburl: state.WebUrl
     };
 }
 
