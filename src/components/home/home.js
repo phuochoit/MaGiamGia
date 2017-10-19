@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, TouchableOpacity,Image } from "react-native";
+import { FlatList, TouchableOpacity, Image, BackAndroid } from "react-native";
 import { Container, Title, View, Thumbnail, Grid, Card, CardItem, Body} from "native-base";
 import { connect } from "react-redux";
 import { capitalize } from "lodash";
