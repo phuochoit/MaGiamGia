@@ -2,7 +2,7 @@ import React from 'react';
 import { Root, Text, View } from "native-base";
 import { AppLoading, Asset, Font } from 'expo';
 import { Provider } from 'react-redux';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Ionicons, FontAwesome, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 import store from "./src/redux/store";
 import HomeApp from "./src/components/"
