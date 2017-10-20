@@ -1,13 +1,16 @@
 import React from "react";
 import { FlatList, Image, TouchableOpacity} from "react-native";
 import { Container, Grid, Card, Button, CardItem, Text, View, Title} from "native-base";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { concat, isUndefined, lowerCase } from "lodash";
 
 // import style app
 import HeaderApp from "../header";
 import Isloading from "../isloading";
+import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
+import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
 
 
@@ -20,7 +23,10 @@ class Review extends React.Component {
             data: [],
             page: 1
         };
+
+        this.props.checkConnectedDataThunk();
     }
+
     componentWillMount() {
         const { apiurl, weburl } = this.props;
         let url = { url: weburl + "review/page/" + this.state.page};
@@ -65,6 +71,11 @@ class Review extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        const { isConnected } = this.props;
+
+        if (!isConnected) {
+            return (<IsConnected />);
+        }
 
         if (!this.state.isReady) {
             return (<Isloading />);
@@ -113,7 +124,13 @@ class Review extends React.Component {
 function mapStateToProps(state){
     return {
         apiurl: state.ApiUrl,
-        weburl: state.WebUrl
+        weburl: state.WebUrl,
+        isConnected: state.isConnected.isConnected
     };
 }
-export default connect(mapStateToProps, { })(Review);
+
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ checkConnectedDataThunk: checkConnectedDataThunk }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Review);

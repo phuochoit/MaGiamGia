@@ -1,12 +1,15 @@
 import React from "react";
 import { FlatList, TouchableOpacity, Image } from "react-native";
 import { Container, Grid, Text, View, H3, Card, CardItem, Body, Button } from "native-base";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { concat, isUndefined } from "lodash";
 
 import HeaderApp from "../header";
 import Isloading from "../isloading";
+import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
+import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
 
 class Guide extends React.Component {
@@ -18,6 +21,7 @@ class Guide extends React.Component {
             data: [],
             page: 1
         };
+        this.props.checkConnectedDataThunk();
     }
     componentWillMount() {
         let url = { url: this.props.weburl + "huong-dan/page/1" };
@@ -62,6 +66,12 @@ class Guide extends React.Component {
     }
     render() {
         const { navigate } = this.props.navigation;
+        const {isConnected } = this.props;
+
+        if (!isConnected) {
+            return (<IsConnected />);
+        }
+
         if (!this.state.isReady) {
             return (<Isloading />);
         }
@@ -110,8 +120,13 @@ class Guide extends React.Component {
 function mapStateToProps(state) {
     return {
         apiurl: state.ApiUrl,
-        weburl: state.WebUrl
+        weburl: state.WebUrl,
+        isConnected: state.isConnected.isConnected
     };
 }
 
-export default connect(mapStateToProps)(Guide);
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ checkConnectedDataThunk: checkConnectedDataThunk }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Guide);

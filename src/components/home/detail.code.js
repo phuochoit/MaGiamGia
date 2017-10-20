@@ -1,18 +1,29 @@
 import React from "react";
 import { Clipboard } from "react-native";
 import { Container, Body, Button, Text, View, H3, CardItem, Card, H2, Toast} from "native-base";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+
 import HeaderApp from "../header";
+import IsConnected from "../isConnected";
+import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
 
 class DetailCode extends React.Component {
     constructor(props) {
         super(props);
-       
+        this.props.checkConnectedDataThunk();
     }
+
     render() {
         const { navigate, state, goBack } = this.props.navigation;      
         const title_menu = "Mã Giám Giá " + state.params.titleheader;
+        const { isConnected } = this.props;
+
+        if (!isConnected) {
+            return (<IsConnected />);
+        }
+
         return (
             <Container>
                 
@@ -51,4 +62,14 @@ class DetailCode extends React.Component {
     }
 }
 
-export default DetailCode;
+function mapStateToProps(state) {
+    return {
+        isConnected: state.isConnected.isConnected
+    }
+}
+
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ checkConnectedDataThunk: checkConnectedDataThunk }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(DetailCode);

@@ -1,13 +1,15 @@
 import React from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import { Container, Body, Icon, Button, Text, View, H3, CardItem, Card, Grid, Input } from "native-base";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { upperFirst, split } from "lodash";
 
-import { postData } from "../../api";
 import Isloading from "../isloading";
 import HeaderApp from "../header";
-
+import IsConnected from "../isConnected";
+import { postData } from "../../api";
+import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
 
 class Detail extends React.Component {
@@ -17,7 +19,9 @@ class Detail extends React.Component {
             detail_Data: [],
             isReady: false,
         }
+        this.props.checkConnectedDataThunk();
     }
+
     componentWillMount() {
         const { state } = this.props.navigation;
         const param = { url: state.params.url };
@@ -31,9 +35,15 @@ class Detail extends React.Component {
 
     render() {
         const { navigate, state, goBack } = this.props.navigation;
+        const { isConnected } = this.props;
         const params_name = upperFirst(state.params.name);
         const name = split(params_name, 'tháng');
         const title_menu = "Mã Giám Giá " + name[0];
+
+        if (!isConnected) {
+            return (<IsConnected />);
+        }
+
         if (!this.state.isReady) {
             return (<Isloading />);
         }
@@ -87,9 +97,16 @@ class Detail extends React.Component {
         );
     }
 }
+
 function mapStateToProps(state) {
     return {
         apiurl: state.ApiUrl,
+        isConnected: state.isConnected.isConnected
     }
 }
-export default connect(mapStateToProps)(Detail);
+
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ checkConnectedDataThunk: checkConnectedDataThunk }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Detail);

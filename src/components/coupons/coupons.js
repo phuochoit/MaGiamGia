@@ -1,17 +1,21 @@
+
 import React from "react";
 import { FlatList, Image, TouchableOpacity } from "react-native";
 import { Container, Grid, Card, Button, CardItem, Text, View, Title } from "native-base";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { concat, isUndefined, lowerCase } from "lodash";
 
 // import style app
 import HeaderApp from "../header";
 import Isloading from "../isloading";
+import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
+import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
 
-
 class Coupons extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -20,7 +24,9 @@ class Coupons extends React.Component {
             data: [],
             page: 1
         };
+        this.props.checkConnectedDataThunk();
     }
+
     componentWillMount() {
         const { apiurl, weburl } = this.props;
         let url = { url: weburl + "coupons/shopping/page/" + this.state.page };
@@ -34,6 +40,7 @@ class Coupons extends React.Component {
             }
         });
     }
+
     _onRefresh() {
         this.setState({
             refreshing: true,
@@ -65,12 +72,14 @@ class Coupons extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
-
+        const { isConnected } = this.props;
         if (!this.state.isReady) {
             return (<Isloading />);
         }
 
-
+        if (!isConnected) {
+            return (<IsConnected />);
+        }
 
         return (
             <Container>
@@ -110,10 +119,18 @@ class Coupons extends React.Component {
         );
     }
 }
+
+// mapStateToProps
 function mapStateToProps(state) {
     return {
         apiurl: state.ApiUrl,
-        weburl: state.WebUrl
+        weburl: state.WebUrl,
+        isConnected: state.isConnected.isConnected
     };
 }
-export default connect(mapStateToProps, {})(Coupons);
+
+// matchDispatchToProps
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ checkConnectedDataThunk: checkConnectedDataThunk }, dispatch)
+}
+export default connect(mapStateToProps, matchDispatchToProps)(Coupons);

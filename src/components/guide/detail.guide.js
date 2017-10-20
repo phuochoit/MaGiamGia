@@ -1,12 +1,14 @@
 import React from "react";
 import { WebView } from "react-native";
 import { Container, H3, CardItem, Card, Grid } from "native-base";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import HeaderApp from "../header";
 import Isloading from "../isloading";
+import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
-
+import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
 
 class DetailGuide extends React.Component {
@@ -15,8 +17,8 @@ class DetailGuide extends React.Component {
         this.state = {
             isReady: false,
             data: [],
-
         };
+        this.props.checkConnectedDataThunk();
     }
     componentWillMount() {
         const { state } = this.props.navigation;
@@ -32,6 +34,12 @@ class DetailGuide extends React.Component {
     }
     render(){
         const { navigate, state } = this.props.navigation;
+        const { isConnected } = this.props;
+
+        if (!isConnected) {
+            return (<IsConnected />);
+        }
+
         if (!this.state.isReady) {
             return (<Isloading />);
         }
@@ -59,7 +67,12 @@ class DetailGuide extends React.Component {
 function mapStateToProps(state) {
     return {
         apiurl: state.ApiUrl,
+        isConnected: state.isConnected.isConnected
     }
 }
 
-export default connect(mapStateToProps) (DetailGuide);
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ checkConnectedDataThunk: checkConnectedDataThunk }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps) (DetailGuide);

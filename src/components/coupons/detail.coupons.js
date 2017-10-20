@@ -2,12 +2,14 @@ import React from "react";
 import { WebView } from "react-native";
 import { Container, H3, CardItem, Card, Grid } from "native-base";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 import HeaderApp from "../header";
 import Isloading from "../isloading";
+import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
-
 import styles from "../../../assets/css/styles";
+import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 
 class DetailCoupons extends React.Component {
     constructor(props) {
@@ -15,15 +17,14 @@ class DetailCoupons extends React.Component {
         this.state = {
             isReady: false,
             data: [],
-
         };
+        this.props.checkConnectedDataThunk();
     }
     componentWillMount() {
         const { state } = this.props.navigation;
         const param = { url: state.params.url}
         getDataByParams(this.props.apiurl + 'getDetail.php', param).then(
             (temp) => {
-                console.log(temp);
                 this.setState({
                     data: temp,
                     isReady: true,
@@ -33,6 +34,12 @@ class DetailCoupons extends React.Component {
     }
     render(){
         const { navigate, state } = this.props.navigation;
+        const { isConnected } = this.props;
+
+        if (!isConnected) {
+            return (<IsConnected />);
+        }
+
         if (!this.state.isReady) {
             return (<Isloading />);
         }
@@ -62,7 +69,12 @@ class DetailCoupons extends React.Component {
 function mapStateToProps(state) {
     return {
         apiurl: state.ApiUrl,
+        isConnected: state.isConnected.isConnected
     }
 }
 
-export default connect(mapStateToProps)(DetailCoupons);
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ checkConnectedDataThunk: checkConnectedDataThunk }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(DetailCoupons);

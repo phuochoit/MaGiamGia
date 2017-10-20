@@ -1,6 +1,7 @@
 import React from 'react';
 import { TabNavigator } from "react-navigation";
 import { Button, Text, Footer, FooterTab, Icon } from "native-base";
+import { FontAwesome, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 import HomeNav  from "./home";
 import ReviewNav from "./review";
@@ -27,28 +28,28 @@ export default (HomeApp = TabNavigator(
                             vertical
                             active={props.navigationState.index === 0}
                             onPress={() => props.navigation.navigate("home")}>
-                            <Icon name="home" />
+                            <FontAwesome name="home" color='#fff' size={20} />
                             <Text style={[styles.fontsizemenu]}>Trang Chủ</Text>
                         </Button>
                         <Button
                             vertical
                             active={props.navigationState.index === 1}
                             onPress={() => props.navigation.navigate("review")}>
-                            <Icon name="home" />
+                            <MaterialIcons name="rate-review" color='#fff' size={20}/>
                             <Text style={[styles.fontsizemenu]}>Review</Text>
                         </Button>
                         <Button
                             vertical
                             active={props.navigationState.index === 2}
                             onPress={() => props.navigation.navigate("coupons")}>
-                            <Icon name="home" />
+                            <FontAwesome name="shopping-cart" color='#fff' size={20} />
                             <Text style={[styles.fontsizemenu]}>Coupons</Text>
                         </Button>
                         <Button
                             vertical
                             active={props.navigationState.index === 3}
                             onPress={() => props.navigation.navigate("guide")}>
-                            <Icon name="headset" />
+                            <MaterialCommunityIcons name="television-guide" color='#fff' size={20}/>
                             <Text style={[styles.fontsizemenu]}>Hướng Dẫn</Text>
                         </Button>
                     </FooterTab>

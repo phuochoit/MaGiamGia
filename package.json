@@ -1,7 +1,7 @@
 {
-  "name": "ma-giam-gia",
-  "version": "0.0.0",
-  "description": "Hello Expo!",
+  "name": "Mã Giảm Giá",
+  "version": "1.0.7",
+  "description": "Cập nhật mã giảm giá zalora, voucher lazada khuyến mãi, coupon Tiki, Cdiscount, Mytour.. các trang web lớn ở VN, chia sẻ kinh nghiệm mua hàng online",
   "author": null,
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
