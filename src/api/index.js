@@ -22,7 +22,7 @@ export function getData(URL) {
 export function getDataByParams(URL, params) {
     return get(URL, {  params })
         .then(response => response.data)
-        .catch(error => error);
+        .catch(error => console.log(error));
 }
 
 /**
