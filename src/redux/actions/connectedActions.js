@@ -1,6 +1,7 @@
 import { NetInfo } from "react-native";
 import { CONNECTIVITY} from "./types";
 
+
 export function fetchSuccess(temp) {
     return {
         type: CONNECTIVITY,
@@ -9,6 +10,11 @@ export function fetchSuccess(temp) {
 }
 
 function get_netconnected() {
+    NetInfo.addEventListener(
+        'connectionChange',
+        handleFirstConnectivityChange
+    );
+
     return NetInfo.isConnected.fetch().then(response => response);
 }
 
@@ -22,4 +28,12 @@ export function checkConnectedDataThunk() {
                 console.log(error)
             });
     }
+}
+
+function handleFirstConnectivityChange(connectionInfo) {
+
+    NetInfo.removeEventListener(
+        'connectionChange',
+        this.handleFirstConnectivityChange
+    );
 }

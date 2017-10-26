@@ -1,6 +1,6 @@
 import React from "react";
-import { FlatList, TouchableOpacity, Image, BackAndroid } from "react-native";
-import { Container, Title, View, Thumbnail, Grid, Card, CardItem, Body, Button, Text} from "native-base";
+import { FlatList, TouchableOpacity, Image } from "react-native";
+import { Container, Grid, Card, CardItem} from "native-base";
 import { connect } from "react-redux";
 import { capitalize } from "lodash";
 import { bindActionCreators } from "redux";
@@ -73,9 +73,6 @@ class Home extends React.Component {
                                         onPress={() => { navigate('Detail', { url: item.url, name: capitalize(item.name) }) }} >
                                         <CardItem style={{ justifyContent: "center" }}>
                                             <Image square source={{ uri: item.image }} style={[styles.imagehome]} />
-                                        </CardItem>
-                                        <CardItem style={{ justifyContent: "center" }}>
-                                            <Title style={[styles.tile]}>{capitalize(item.name)}</Title>
                                         </CardItem>
                                     </TouchableOpacity>
                                 </Card>
