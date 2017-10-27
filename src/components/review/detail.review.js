@@ -10,6 +10,7 @@ import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
+import { AdMobBanner_AdMob } from "../admob";
 
 class DetailReview extends React.Component {
     constructor(props) {
@@ -39,26 +40,29 @@ class DetailReview extends React.Component {
         const { isConnected } = this.props;
 
         if (!isConnected) {
-            return (<IsConnected />);
+            return (<IsConnected navigation={this.props.navigation} menuleft="1" menuright="1" menutitle="Review"/>);
         }
 
         if (!this.state.isReady) {
-            return (<Isloading />);
+            return (<Isloading navigation={this.props.navigation} menuleft="1" menuright="1" menutitle="Review"/>);
         }
         return(
             <Container>
                 <HeaderApp navigation={this.props.navigation} menuleft="1" menuright="1" menutitle="Review" />
                 <Grid style={{ marginHorizontal: 5, marginVertical:10 }}>
                     <Card style={[styles.flex1]}>
-                        <CardItem header style={{ paddingBottom: 0 }}>
+                        <CardItem header style={{ paddingBottom: 0 , flex:1}}>
                             <H3 style={{ color: "#ED1C24" }}>{state.params.title}</H3>
                         </CardItem>
-                        <CardItem style={[styles.flex1]}>
+                        <CardItem style={{flex:3}}>
                             <WebView
                                 source={{ html: this.state.data }}
                                 startInLoadingState={true}
                                 scalesPageToFit={true}
                             />
+                        </CardItem>
+                        <CardItem style={[styles.flex1]}>
+                            <AdMobBanner_AdMob bannerSize="fullBanner" />
                         </CardItem>
                     </Card>
                 </Grid>

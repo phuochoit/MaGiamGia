@@ -12,7 +12,7 @@ import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
-
+import { AdMobBanner_AdMob } from "../admob";
 
 class Review extends React.Component {
     constructor(props) {
@@ -74,11 +74,11 @@ class Review extends React.Component {
         const { isConnected } = this.props;
 
         if (!isConnected) {
-            return (<IsConnected />);
+            return (<IsConnected navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Review đơn hàng"/>);
         }
 
         if (!this.state.isReady) {
-            return (<Isloading />);
+            return (<Isloading navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Review đơn hàng"/>);
         }
 
         
@@ -116,6 +116,12 @@ class Review extends React.Component {
                     onRefresh={this._onRefresh.bind(this)}
                     onEndReachedThreshold={0.1}
                     onEndReached={this._onEndReached.bind(this)}
+                    ListFooterComponent={
+                        <AdMobBanner_AdMob bannerSize="fullBanner" />
+                    }
+                    ListHeaderComponent={
+                        <AdMobBanner_AdMob bannerSize="fullBanner" />
+                    }
                 />
             </Container>
         );

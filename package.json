@@ -1,5 +1,5 @@
 {
-  "name": "Mã Giảm Giá",
+  "name": "ma-giam-gia",
   "version": "1.0.8",
   "description": "Cập nhật mã giảm giá zalora, voucher lazada khuyến mãi, coupon Tiki, Cdiscount, Mytour.. các trang web lớn ở VN, chia sẻ kinh nghiệm mua hàng online",
   "author": null,
@@ -11,6 +11,7 @@
     "expo": "^21.0.0",
     "lodash": "^4.17.4",
     "native-base": "^2.3.2",
+    "package": "^1.0.1",
     "react": "16.0.0-alpha.12",
     "react-native": "https://github.com/expo/react-native/archive/sdk-21.0.2.tar.gz",
     "react-navigation": "^1.0.0-beta.13",

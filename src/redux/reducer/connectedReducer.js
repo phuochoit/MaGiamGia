@@ -1,7 +1,7 @@
 import { CONNECTIVITY } from "../actions/types";
 
 const DEFAULT_STATE = {
-    isConnected: ""
+    isConnected: true
 };
 
 

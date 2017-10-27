@@ -37,11 +37,11 @@ class DetailGuide extends React.Component {
         const { isConnected } = this.props;
 
         if (!isConnected) {
-            return (<IsConnected />);
+            return (<IsConnected navigation={this.props.navigation} menuleft="1" menuright="1" menutitle="Hướng Dẫn"/>);
         }
 
         if (!this.state.isReady) {
-            return (<Isloading />);
+            return (<Isloading navigation={this.props.navigation} menuleft="1" menuright="1" menutitle="Hướng Dẫn"/>);
         }
         return(
             <Container>

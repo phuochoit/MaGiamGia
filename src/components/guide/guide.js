@@ -69,11 +69,11 @@ class Guide extends React.Component {
         const {isConnected } = this.props;
 
         if (!isConnected) {
-            return (<IsConnected />);
+            return (<IsConnected navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Hướng Dẫn"/>);
         }
 
         if (!this.state.isReady) {
-            return (<Isloading />);
+            return (<Isloading navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Hướng Dẫn"/>);
         }
 
         return (

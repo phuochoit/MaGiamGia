@@ -74,16 +74,15 @@ class Coupons extends React.Component {
         const { navigate } = this.props.navigation;
         const { isConnected } = this.props;
         if (!this.state.isReady) {
-            return (<Isloading />);
+            return (<Isloading navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Coupons"/>);
         }
 
         if (!isConnected) {
-            return (<IsConnected />);
+            return (<IsConnected navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Coupons"/>);
         }
 
         return (
             <Container>
-
                 <HeaderApp navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Coupons" />
                 <FlatList
                     data={this.state.data}

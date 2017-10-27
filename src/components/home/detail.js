@@ -11,6 +11,8 @@ import IsConnected from "../isConnected";
 import { postData } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
+import { AdMobBanner_AdMob } from "../admob";
+
 
 class Detail extends React.Component {
     constructor(props) {
@@ -41,11 +43,11 @@ class Detail extends React.Component {
         const title_menu = "Mã Giám Giá " + name[0];
 
         if (!isConnected) {
-            return (<IsConnected />);
+            return (<IsConnected navigation={this.props.navigation} menuleft="1" menuright="1" menutitle={title_menu} />);
         }
 
         if (!this.state.isReady) {
-            return (<Isloading />);
+            return (<Isloading navigation={this.props.navigation} menuleft="1" menuright="1" menutitle={title_menu} />);
         }
         return (
             <Container>
@@ -91,6 +93,12 @@ class Detail extends React.Component {
                         )
                     }
                     keyExtractor={item => item.id}
+                    ListFooterComponent={
+                        <AdMobBanner_AdMob bannerSize="fullBanner" />
+                    }
+                    ListHeaderComponent={
+                        <AdMobBanner_AdMob bannerSize="fullBanner" />
+                    }
                 />
 
             </Container>
