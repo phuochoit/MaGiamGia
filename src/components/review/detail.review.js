@@ -1,8 +1,9 @@
 import React from "react";
 import { WebView } from "react-native";
-import { Container, H3, CardItem, Card, Grid } from "native-base";
+import { Container, Title, CardItem, Card, Grid } from "native-base";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import {isNull } from "lodash";
 
 import HeaderApp from "../header";
 import Isloading from "../isloading";
@@ -10,7 +11,6 @@ import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
-import { AdMobBanner_AdMob } from "../admob";
 
 class DetailReview extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class DetailReview extends React.Component {
         this.props.checkConnectedDataThunk();
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { state } = this.props.navigation;
         const param = { url: state.params.url}
         getDataByParams(this.props.apiurl + 'getDetail.php', param).then(
@@ -33,6 +33,21 @@ class DetailReview extends React.Component {
                 })
             }
         );
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isConnected && isNull(this.state.data)) {
+            const { state } = this.props.navigation;
+            const param = { url: state.params.url }
+            getDataByParams(this.props.apiurl + 'getDetail.php', param).then(
+                (temp) => {
+                    this.setState({
+                        data: temp,
+                        isReady: true,
+                    })
+                }
+            );
+        }
     }
 
     render(){
@@ -52,17 +67,14 @@ class DetailReview extends React.Component {
                 <Grid style={{ marginHorizontal: 5, marginVertical:10 }}>
                     <Card style={[styles.flex1]}>
                         <CardItem header style={{ paddingBottom: 0 , flex:1}}>
-                            <H3 style={{ color: "#ED1C24" }}>{state.params.title}</H3>
+                            <Title style={{ color: "#ED1C24" }}>{state.params.title}</Title>
                         </CardItem>
-                        <CardItem style={{flex:3}}>
+                        <CardItem style={{flex:4}}>
                             <WebView
                                 source={{ html: this.state.data }}
                                 startInLoadingState={true}
                                 scalesPageToFit={true}
                             />
-                        </CardItem>
-                        <CardItem style={[styles.flex1]}>
-                            <AdMobBanner_AdMob bannerSize="fullBanner" />
                         </CardItem>
                     </Card>
                 </Grid>

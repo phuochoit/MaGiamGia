@@ -3,7 +3,7 @@ import { FlatList, Image, TouchableOpacity} from "react-native";
 import { Container, Grid, Card, Button, CardItem, Text, View, Title} from "native-base";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { concat, isUndefined, lowerCase } from "lodash";
+import { concat, isUndefined, lowerCase, isNull } from "lodash";
 
 // import style app
 import HeaderApp from "../header";
@@ -12,7 +12,6 @@ import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
-import { AdMobBanner_AdMob } from "../admob";
 
 class Review extends React.Component {
     constructor(props) {
@@ -27,7 +26,7 @@ class Review extends React.Component {
         this.props.checkConnectedDataThunk();
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { apiurl, weburl } = this.props;
         let url = { url: weburl + "review/page/" + this.state.page};
         getDataByParams(this.props.apiurl + 'getListTutorial.php' , url).then((temp) => {
@@ -40,6 +39,24 @@ class Review extends React.Component {
             }
         });
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isConnected && isNull(this.state.data)) {
+            const { apiurl, weburl } = this.props;
+            let url = { url: weburl + "review/page/" + this.state.page };
+            getDataByParams(this.props.apiurl + 'getListTutorial.php', url).then((temp) => {
+                if (!isUndefined(temp)) {
+                    this.setState({
+                        data: temp,
+                        isReady: true,
+                        page: this.state.page + 1
+                    });
+                }
+            });
+        }
+    }
+
+
     _onRefresh() {
         this.setState({
             refreshing: true,
@@ -116,12 +133,6 @@ class Review extends React.Component {
                     onRefresh={this._onRefresh.bind(this)}
                     onEndReachedThreshold={0.1}
                     onEndReached={this._onEndReached.bind(this)}
-                    ListFooterComponent={
-                        <AdMobBanner_AdMob bannerSize="fullBanner" />
-                    }
-                    ListHeaderComponent={
-                        <AdMobBanner_AdMob bannerSize="fullBanner" />
-                    }
                 />
             </Container>
         );

@@ -2,7 +2,7 @@ import React from "react";
 import { FlatList, TouchableOpacity, Image } from "react-native";
 import { Container, Grid, Card, CardItem, Text, View } from "native-base";
 import { connect } from "react-redux";
-import { capitalize, size, toInteger } from "lodash";
+import { capitalize, size, toInteger, isNull } from "lodash";
 import { bindActionCreators } from "redux";
 
 import Isloading from "../isloading";
@@ -11,8 +11,6 @@ import HeaderApp from "../header";
 import { getData } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
-
-import { AdMobBanner_AdMob } from "../admob";
 
 class FlatListItem extends React.Component {
     render() {
@@ -43,7 +41,7 @@ class Home extends React.Component {
         this.props.checkConnectedDataThunk();
     }
 
-    componentWillMount() {
+    componentDidMount() {
         getData(this.props.apiurl).then((temp) => {
             this.setState({
                 data: temp,
@@ -51,6 +49,16 @@ class Home extends React.Component {
             });
         });
 
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isConnected && isNull(this.state.data)){
+            getData(this.props.apiurl).then((temp) => {
+                this.setState({
+                    data: temp,
+                    isReady: true
+                });
+            });
+        }
     }
 
     _onRefresh() {
@@ -98,12 +106,6 @@ class Home extends React.Component {
                     onRefresh={this._onRefresh.bind(this)}
                     horizontal={false}
                     numColumns={2}
-                    ListFooterComponent={
-                        <AdMobBanner_AdMob bannerSize="fullBanner" />
-                    }
-                    ListHeaderComponent={
-                        <AdMobBanner_AdMob bannerSize="fullBanner" />
-                    }
                 />
 
             </Container>

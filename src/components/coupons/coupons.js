@@ -4,7 +4,7 @@ import { FlatList, Image, TouchableOpacity } from "react-native";
 import { Container, Grid, Card, Button, CardItem, Text, View, Title } from "native-base";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { concat, isUndefined, lowerCase } from "lodash";
+import { concat, isUndefined, lowerCase, isNull } from "lodash";
 
 // import style app
 import HeaderApp from "../header";
@@ -27,7 +27,7 @@ class Coupons extends React.Component {
         this.props.checkConnectedDataThunk();
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { apiurl, weburl } = this.props;
         let url = { url: weburl + "coupons/shopping/page/" + this.state.page };
         getDataByParams(this.props.apiurl + 'getListTutorial.php', url).then((temp) => {
@@ -39,6 +39,22 @@ class Coupons extends React.Component {
                 });
             }
         });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isConnected && isNull(this.state.data)){
+            const { apiurl, weburl } = this.props;
+            let url = { url: weburl + "coupons/shopping/page/" + this.state.page };
+            getDataByParams(this.props.apiurl + 'getListTutorial.php', url).then((temp) => {
+                if (!isUndefined(temp)) {
+                    this.setState({
+                        data: temp,
+                        isReady: true,
+                        page: this.state.page + 1
+                    });
+                }
+            });
+        }
     }
 
     _onRefresh() {

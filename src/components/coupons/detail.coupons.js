@@ -1,8 +1,9 @@
 import React from "react";
 import { WebView } from "react-native";
-import { Container, H3, CardItem, Card, Grid } from "native-base";
+import { Container, Title, CardItem, Card, Grid } from "native-base";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { isNull } from "lodash";
 
 import HeaderApp from "../header";
 import Isloading from "../isloading";
@@ -20,7 +21,7 @@ class DetailCoupons extends React.Component {
         };
         this.props.checkConnectedDataThunk();
     }
-    componentWillMount() {
+    componentDidMount() {
         const { state } = this.props.navigation;
         const param = { url: state.params.url}
         getDataByParams(this.props.apiurl + 'getDetail.php', param).then(
@@ -32,6 +33,22 @@ class DetailCoupons extends React.Component {
             }
         );
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isConnected && isNull(this.state.data)) {
+            const { state } = this.props.navigation;
+            const param = { url: state.params.url }
+            getDataByParams(this.props.apiurl + 'getDetail.php', param).then(
+                (temp) => {
+                    this.setState({
+                        data: temp,
+                        isReady: true,
+                    })
+                }
+            );
+        }
+    }
+    
     render(){
         const { navigate, state } = this.props.navigation;
         const { isConnected } = this.props;
@@ -49,7 +66,7 @@ class DetailCoupons extends React.Component {
                 <Grid style={{ marginHorizontal: 5, marginVertical:10 }}>
                     <Card style={[styles.flex1]}>
                         <CardItem header style={{ paddingBottom: 0 }}>
-                            <H3 style={{ color: "#ED1C24" }}>{state.params.title}</H3>
+                            <Title style={{ color: "#ED1C24" }}>{state.params.title}</Title>
                         </CardItem>
                         <CardItem style={[styles.flex1]}>
                             <WebView

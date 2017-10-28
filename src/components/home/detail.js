@@ -3,7 +3,7 @@ import { FlatList, TouchableOpacity } from "react-native";
 import { Container, Body, Icon, Button, Text, View, H3, CardItem, Card, Grid, Input } from "native-base";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { upperFirst, split } from "lodash";
+import { upperFirst, split, isNull } from "lodash";
 
 import Isloading from "../isloading";
 import HeaderApp from "../header";
@@ -24,7 +24,7 @@ class Detail extends React.Component {
         this.props.checkConnectedDataThunk();
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { state } = this.props.navigation;
         const param = { url: state.params.url };
         postData(this.props.apiurl + 'getListVoucher.php', param).then((temp) => {
@@ -33,6 +33,19 @@ class Detail extends React.Component {
                 isReady: true
             });
         });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isConnected && isNull(this.state.detail_Data)) {
+            const { state } = this.props.navigation;
+            const param = { url: state.params.url };
+            postData(this.props.apiurl + 'getListVoucher.php', param).then((temp) => {
+                this.setState({
+                    detail_Data: temp,
+                    isReady: true
+                });
+            });
+        }
     }
 
     render() {
@@ -93,12 +106,6 @@ class Detail extends React.Component {
                         )
                     }
                     keyExtractor={item => item.id}
-                    ListFooterComponent={
-                        <AdMobBanner_AdMob bannerSize="fullBanner" />
-                    }
-                    ListHeaderComponent={
-                        <AdMobBanner_AdMob bannerSize="fullBanner" />
-                    }
                 />
 
             </Container>

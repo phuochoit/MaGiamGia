@@ -3,7 +3,7 @@ import { FlatList, TouchableOpacity, Image } from "react-native";
 import { Container, Grid, Text, View, H3, Card, CardItem, Body, Button } from "native-base";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { concat, isUndefined } from "lodash";
+import { concat, isUndefined, isNull} from "lodash";
 
 import HeaderApp from "../header";
 import Isloading from "../isloading";
@@ -23,7 +23,7 @@ class Guide extends React.Component {
         };
         this.props.checkConnectedDataThunk();
     }
-    componentWillMount() {
+    componentDidMount() {
         let url = { url: this.props.weburl + "huong-dan/page/1" };
         getDataByParams(this.props.apiurl + 'getListTutorial.php', url).then((temp) => {
             if (!isUndefined(temp)) {
@@ -33,10 +33,25 @@ class Guide extends React.Component {
                     page: this.state.page + 1
                 });
             }
-        });
-
-        
+        });    
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isConnected && isNull(this.state.data)) {
+            let url = { url: this.props.weburl + "huong-dan/page/1" };
+            getDataByParams(this.props.apiurl + 'getListTutorial.php', url).then((temp) => {
+                if (!isUndefined(temp)) {
+                    this.setState({
+                        data: temp,
+                        isReady: true,
+                        page: this.state.page + 1
+                    });
+                }
+            });
+        }
+    }
+
+
     _onRefresh(){
         this.setState({
             refreshing: true,

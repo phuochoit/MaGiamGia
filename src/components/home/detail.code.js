@@ -8,7 +8,7 @@ import HeaderApp from "../header";
 import IsConnected from "../isConnected";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 import styles from "../../../assets/css/styles";
-import { AdMobBanner_AdMob} from "../admob";
+import { AdMobBannerConetnet} from "../admob";
 
 class DetailCode extends React.Component {
     constructor(props) {
@@ -36,11 +36,11 @@ class DetailCode extends React.Component {
                             <H3>{state.params.name}</H3>
                         </CardItem>
                         <CardItem style={{ flex: 3 }}>
-                            <AdMobBanner_AdMob bannerSize="mediumRectangle" />
+                            <AdMobBannerConetnet bannerSize="mediumRectangle" />
                         </CardItem>
                         <CardItem footer >
                             <Body style={{ flex: 1, alignItems: "center" }}>
-                                <H2 style={{marginBottom:10}}>{state.params.code}</H2>
+                                {/* <H2 style={{marginBottom:10}}>{state.params.code}</H2> */}
                                 <Button 
                                 full 
                                     onPress={() =>  {

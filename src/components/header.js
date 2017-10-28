@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Header, Left, Text, Button, Icon, Body, Right, Title, View} from "native-base";
 
 import styles from "../../assets/css/styles"
+import { AdMobBannerHeader } from "./admob";
 
 class HeaderApp extends Component {
     
@@ -29,13 +30,16 @@ class HeaderApp extends Component {
         }
 
         return (
-            <Header androidStatusBarColor='#ec5c54' >
-                {left}
-                <Body style={[styles.flex3, styles.headerBody]}>
-                    <Title>{menutitle}</Title>
-                </Body>
-                {right}
-            </Header>
+            <View>
+                <Header androidStatusBarColor='#ec5c54' >
+                    {left}
+                    <Body style={[styles.flex3, styles.headerBody]}>
+                        <Title>{menutitle}</Title>
+                    </Body>
+                    {right}
+                </Header>
+                <AdMobBannerHeader bannerSize="banner" />
+            </View>
         );
     }
 }
