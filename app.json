@@ -5,13 +5,13 @@
         "slug": "ma-giam-gia",
         "privacy": "public",
         "sdkVersion": "21.0.0",
-        "version": "1.1.0",
+        "version": "1.1.1",
         "orientation": "default",
         "primaryColor": "#cccccc",
-        "androidStatusBarColor": "#334393",
+        "androidStatusBarColor": "#ec5c54",
         "androidStatusBar": {
             "barStyle": "light-content",
-            "backgroundColor": "#334393"
+            "backgroundColor": "#ec5c54"
         },
         "icon": "./assets/icons/app-icon.png",
         "loading": {

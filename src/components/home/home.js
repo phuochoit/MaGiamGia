@@ -10,16 +10,16 @@ import IsConnected from "../isConnected";
 import HeaderApp from "../header";
 import { getData } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
-import styles from "../../../assets/css/styles";
+import {styles} from "../../../assets/css/styles";
 
 class FlatListItem extends React.Component {
     render() {
         return (
-            <Grid style={{ marginHorizontal: 5 }}>
+            <Grid style={[styles.mHorizontal5]}>
                 <Card>
                     <TouchableOpacity
                         onPress={() => { this.props.navigation.navigate('Detail', { url: this.props.item.url, name: capitalize(this.props.item.name) }) }} >
-                        <CardItem style={{ justifyContent: "center" }}>
+                        <CardItem style={[styles.homeboximage]}>
                             <Image square source={{ uri: this.props.item.image }} style={[styles.imagehome]} />
                         </CardItem>
                     </TouchableOpacity>

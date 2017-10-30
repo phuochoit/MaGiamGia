@@ -10,7 +10,7 @@ import Isloading from "../isloading";
 import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
-import styles from "../../../assets/css/styles";
+import { styles } from "../../../assets/css/styles";
 
 class DetailReview extends React.Component {
     constructor(props) {
@@ -66,7 +66,7 @@ class DetailReview extends React.Component {
                 <HeaderApp navigation={this.props.navigation} menuleft="1" menuright="1" menutitle="Review" />
                 <Grid style={{ marginHorizontal: 5, marginVertical:10 }}>
                     <Card style={[styles.flex1]}>
-                        <CardItem header style={{ paddingBottom: 0 , flex:1}}>
+                        <CardItem header style={{ paddingBottom: 0 }}>
                             <Title style={{ color: "#ED1C24" }}>{state.params.title}</Title>
                         </CardItem>
                         <CardItem style={{flex:4}}>

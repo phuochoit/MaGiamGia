@@ -11,7 +11,7 @@ import Isloading from "../isloading";
 import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
-import styles from "../../../assets/css/styles";
+import { styles } from "../../../assets/css/styles";
 
 class Review extends React.Component {
     constructor(props) {

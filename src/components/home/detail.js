@@ -4,13 +4,15 @@ import { Container, Body, Icon, Button, Text, View, H3, CardItem, Card, Grid, In
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { upperFirst, split, isNull } from "lodash";
+import { FontAwesome, SimpleLineIcons, MaterialIcons } from '@expo/vector-icons';
+
 
 import Isloading from "../isloading";
 import HeaderApp from "../header";
 import IsConnected from "../isConnected";
 import { postData } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
-import styles from "../../../assets/css/styles";
+import { styles, Color1C57FB, ColorFFF} from "../../../assets/css/styles";
 import { AdMobBanner_AdMob } from "../admob";
 
 
@@ -72,8 +74,8 @@ class Detail extends React.Component {
                         ({ item }) => (
                             <Grid style={{ marginHorizontal: 5, flex: 1 }}>
                                 <Card style={[styles.flex1]}>
-                                    <Button full success>
-                                        <H3 style={{ color: '#fff' }}>Giảm - {item.discount} </H3>
+                                    <Button full color={Color1C57FB}>
+                                        <H3 style={[styles.textColorFFF]}>Giảm - {item.discount} </H3>
                                     </Button>
                                     <TouchableOpacity
                                         onPress={() => { navigate('DetailCode', { code: item.code, name: item.title, titleheader: name[0] }) }}
@@ -84,19 +86,20 @@ class Detail extends React.Component {
                                         <CardItem style={{ flex: 1, paddingTop: 5 }}>
                                             <Body>
                                                 <Text style={[styles.text_icon_home_detail]}>
-                                                    <Icon name='home' style={[styles.icon_home_deatai]} />
-                                                    Hạn dùng:
-                                                <Text style={[styles.text_icon_home_detail_detail]}>{item.expires}</Text>
+                                                    <MaterialIcons name="date-range" size={14} style={[styles.icon_home_deatai]} /> 
+                                                    <Text style={[styles.text_icon_home_detail]}>  Hạn dùng: </Text>
+                                                <Text style={[styles.text_icon_home_detail_detail]}> {item.expires}</Text>
                                                 </Text>
                                                 <Text style={[styles.text_icon_home_detail]}>
-                                                    <Icon name='home' style={[styles.icon_home_deatai]} />
-                                                    Ngành hàng:
-                                                <Text style={[styles.text_icon_home_detail_detail]}>{item.cat}</Text>
+                                                    <FontAwesome name='industry' size={14} style={[styles.icon_home_deatai]} />
+                                                    <Text style={[styles.text_icon_home_detail]}>  Ngành hàng: </Text>
+                                                    
+                                                <Text style={[styles.text_icon_home_detail_detail]}> {item.cat}</Text>
                                                 </Text>
                                                 <Text style={[styles.text_icon_home_detail]}>
-                                                    <Icon name='home' style={[styles.icon_home_deatai]} />
-                                                    Lưu ý:
-                                                <Text style={[styles.text_icon_home_detail_detail]}>{item.note}</Text>
+                                                    <SimpleLineIcons name='note' size={14} style={[styles.icon_home_deatai]} />
+                                                    <Text style={[styles.text_icon_home_detail]}>  Lưu ý: </Text>
+                                                <Text style={[styles.text_icon_home_detail_detail]}>  {item.note}</Text>
                                                 </Text>
                                             </Body>
                                         </CardItem>

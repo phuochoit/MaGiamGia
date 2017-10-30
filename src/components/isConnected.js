@@ -4,7 +4,7 @@ import { Container, Header, Left, Text, Button, Icon, Body, Right, Title, View }
 import { bindActionCreators } from "redux"
 import { connect } from "react-redux";
 
-import styles from "../../assets/css/styles"
+import { styles, Colorec5c54} from "../../assets/css/styles"
 import { checkConnectedDataThunk } from "../redux/actions/connectedActions";
 
 class IsConnected extends Component {
@@ -32,7 +32,7 @@ class IsConnected extends Component {
         }
         return (
             <Container>
-                <Header androidStatusBarColor='#ec5c54' >
+                <Header androidStatusBarColor={Colorec5c54} style={styles.menuHeader}>
                     {left}
                     <Body style={[styles.flex3, styles.headerBody]}>
                         <Title>{menutitle}</Title>

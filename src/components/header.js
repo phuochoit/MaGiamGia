@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Header, Left, Text, Button, Icon, Body, Right, Title, View} from "native-base";
 
-import styles from "../../assets/css/styles"
+import { styles } from "../../assets/css/styles"
 import { AdMobBannerHeader } from "./admob";
 
 class HeaderApp extends Component {
@@ -31,7 +31,7 @@ class HeaderApp extends Component {
 
         return (
             <View>
-                <Header androidStatusBarColor='#ec5c54' >
+                <Header androidStatusBarColor='#ec5c54' style={styles.menuHeader} >
                     {left}
                     <Body style={[styles.flex3, styles.headerBody]}>
                         <Title>{menutitle}</Title>

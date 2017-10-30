@@ -12,7 +12,7 @@ import Isloading from "../isloading";
 import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
-import styles from "../../../assets/css/styles";
+import { styles } from "../../../assets/css/styles";
 
 class Coupons extends React.Component {
 
@@ -89,13 +89,14 @@ class Coupons extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         const { isConnected } = this.props;
-        if (!this.state.isReady) {
-            return (<Isloading navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Coupons"/>);
+        
+        if (!isConnected) {
+            return (<IsConnected navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Coupons" />);
         }
 
-        if (!isConnected) {
-            return (<IsConnected navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Coupons"/>);
-        }
+        if (!this.state.isReady) {
+            return (<Isloading navigation={this.props.navigation} menuleft="0" menuright="0" menutitle="Coupons"/>);
+        }        
 
         return (
             <Container>

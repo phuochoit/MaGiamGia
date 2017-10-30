@@ -9,7 +9,7 @@ import HeaderApp from "../header";
 import Isloading from "../isloading";
 import IsConnected from "../isConnected";
 import { getDataByParams } from "../../api";
-import styles from "../../../assets/css/styles";
+import { styles } from "../../../assets/css/styles";
 import { checkConnectedDataThunk } from "../../redux/actions/connectedActions";
 
 class DetailCoupons extends React.Component {

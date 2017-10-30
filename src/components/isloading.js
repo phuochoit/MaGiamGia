@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Spinner, Header, Left, Button, Icon, Body, Right, Title, View } from "native-base";
 
-import styles from "../../assets/css/styles"
+import { styles, Colorec5c54, backgroundE93400 } from "../../assets/css/styles"
 import HeaderApp from "./header";
 class Isloading extends Component {
     
@@ -30,7 +30,7 @@ class Isloading extends Component {
         
         return ( 
             <Container>
-                <Header androidStatusBarColor='#ec5c54' >
+                <Header androidStatusBarColor={Colorec5c54} style={styles.menuHeader}>
                     {left}
                     <Body style={[styles.flex3, styles.headerBody]}>
                         <Title>{menutitle}</Title>
@@ -38,7 +38,7 @@ class Isloading extends Component {
                     {right}
                 </Header>
                 <View style={[styles.contentCenter]}>
-                    <Spinner color="#ED1C24" />
+                    <Spinner color={backgroundE93400} />
                 </View>
                 
             </Container>

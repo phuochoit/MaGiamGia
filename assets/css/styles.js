@@ -1,13 +1,21 @@
-import { StyleSheet, Dimensions ,Image} from "react-native";
-
+import { StyleSheet, Dimensions, Image, Platform} from "react-native";
 const { width, height } = Dimensions.get("window");
-const logowidth = (width / 2) - 20;
-// console.log("width:",((width/2) - 20) ); // 360d
-// console.log("height:",height);
-backgroundColorBlue = "blue";
-backgroundColorWhite = "#fff";
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
+const platform = Platform.OS;
+const isIphoneX = platform === "ios" && deviceHeight === 812 && deviceWidth === 375;
+const is4in = 360;
 
-const styles = StyleSheet.create({
+const logowidth = (width / 2) - 40;
+export const backgroundColorBlue = "blue";
+export const  ColorFFF = "#fff";
+export const backgroundF94D1B = '#F94D1B';
+export const backgroundE93400 = '#E93400';
+export const Colorec5c54 = '#ec5c54';
+export const ColorED1C24 = '#ED1C24';
+export const ColorE9E9EF = '#E9E9EF';
+export const Color1C57FB = "#1C57FB";
+export const styles = StyleSheet.create({
     flex0: {
         flex: 0,
     },
@@ -16,6 +24,9 @@ const styles = StyleSheet.create({
     },
     flex3: {
         flex: 3,
+    },
+    justifyContent:{
+        justifyContent: 'center'
     },
     headerBody: {
         alignItems: 'center'
@@ -27,8 +38,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#fcfcfc",
     },
     backgroundDeafaultBar: {
-        backgroundColor: backgroundColorWhite,
+        backgroundColor: ColorFFF,
     },
+    homeboximage:{
+        justifyContent: "center",
+        padding: 20 
+    }, 
     imagehome: {
         width: logowidth,
         height: logowidth / 2,
@@ -49,28 +64,41 @@ const styles = StyleSheet.create({
         height: null
     },
     tile: {
-        color: "#ED1C24"
+        color: ColorED1C24
     },
     textColor: {
         color: "#333"
     },
     icon_home_deatai: {
-        color: "#7bb12f",
-        fontSize: 17,
-        paddingRight: 5
+        color: backgroundF94D1B,
+        paddingRight: 5,
+        marginRight:10
     },
     text_icon_home_detail_detail: {
         color: "#666",
         fontSize: 13
     },
     text_icon_home_detail: {
-        color: "#7bb12f",
+        color: backgroundF94D1B,
         fontSize: 13,
         marginBottom: 5
     },
     font18: {
         fontSize: 18,
+    },
+    menuHeader: {
+        backgroundColor: backgroundF94D1B,
+    },
+    backgroundFooter: {
+        backgroundColor: ColorE9E9EF,
+    },
+    footerButton:{
+        paddingVertical: isIphoneX ? 25 : 10,
+    },
+    mHorizontal5: {
+        marginHorizontal: 5
+    },
+    textColorFFF:{
+        color: ColorFFF,
     }
 });
-
-export default styles;
