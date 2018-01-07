@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, Image, Platform} from "react-native";
+import { StyleSheet, Dimensions, Image, Platform } from "react-native";
 const { width, height } = Dimensions.get("window");
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -8,9 +8,9 @@ const is4in = 360;
 
 const logowidth = (width / 2) - 40;
 export const backgroundColorBlue = "blue";
-export const  ColorFFF = "#fff";
-export const backgroundF94D1B = '#F94D1B';
-export const backgroundE93400 = '#E93400';
+export const ColorFFF = "#fff";
+export const background2FB8FE = '#2FB8FE';
+export const backgroundE93400 = '#2FB8FE';
 export const Colorec5c54 = '#ec5c54';
 export const ColorED1C24 = '#ED1C24';
 export const ColorE9E9EF = '#E9E9EF';
@@ -19,13 +19,38 @@ export const styles = StyleSheet.create({
     flex0: {
         flex: 0,
     },
-    flex1: {
+    flex10: {
+        flex: 10,
+    },
+    flex20: {
+        flex: 20,
+    },
+    flex30: {
+        flex: 30,
+    },
+    flex40: {
+        flex: 40,
+    },
+    flex50: {
+        flex: 50,
+    },
+    flex60: {
+        flex: 60,
+    },
+    flex70: {
+        flex: 70,
+    },
+    flex80: {
+        flex: 80,
+    },
+    flex90: {
+        flex: 90,
+    },
+    flex100: {
         flex: 1,
     },
-    flex3: {
-        flex: 3,
-    },
-    justifyContent:{
+
+    justifyContent: {
         justifyContent: 'center'
     },
     headerBody: {
@@ -40,10 +65,10 @@ export const styles = StyleSheet.create({
     backgroundDeafaultBar: {
         backgroundColor: ColorFFF,
     },
-    homeboximage:{
+    homeboximage: {
         justifyContent: "center",
-        padding: 20 
-    }, 
+        padding: 20
+    },
     imagehome: {
         width: logowidth,
         height: logowidth / 2,
@@ -70,16 +95,16 @@ export const styles = StyleSheet.create({
         color: "#333"
     },
     icon_home_deatai: {
-        color: backgroundF94D1B,
+        color: background2FB8FE,
         paddingRight: 5,
-        marginRight:10
+        marginRight: 10
     },
     text_icon_home_detail_detail: {
         color: "#666",
         fontSize: 13
     },
     text_icon_home_detail: {
-        color: backgroundF94D1B,
+        color: background2FB8FE,
         fontSize: 13,
         marginBottom: 5
     },
@@ -87,18 +112,18 @@ export const styles = StyleSheet.create({
         fontSize: 18,
     },
     menuHeader: {
-        backgroundColor: backgroundF94D1B,
+        backgroundColor: background2FB8FE,
     },
     backgroundFooter: {
         backgroundColor: ColorE9E9EF,
     },
-    footerButton:{
+    footerButton: {
         paddingVertical: isIphoneX ? 25 : 10,
     },
     mHorizontal5: {
         marginHorizontal: 5
     },
-    textColorFFF:{
+    textColorFFF: {
         color: ColorFFF,
     }
 });

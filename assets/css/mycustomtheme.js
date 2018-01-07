@@ -1,5 +1,5 @@
 import { Platform, Dimensions, PixelRatio } from "react-native";
-import { backgroundF94D1B, backgroundE93400 } from "./styles";
+import { background2FB8FE, backgroundE93400 } from "./styles";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -10,10 +10,10 @@ const is4in = 360;
 export const myThemeFooter = ({
     // FooterTab
     tabBarTextColor: platform === "ios" ? "#fff" : "#fff",
-    tabBarTextSize: platform === "ios" ? 14 : is4in === deviceWidth  ? 10 : 11,
-    activeTab: platform === "ios" ? backgroundE93400 : backgroundE93400,
+    tabBarTextSize: platform === "ios" ? 14 : is4in === deviceWidth ? 10 : 11,
+    activeTab: platform === "ios" ? "#fff" : "#fff",
     sTabBarActiveTextColor: "#fff",
     tabBarActiveTextColor: platform === "ios" ? "#fff" : "#fff",
-    tabActiveBgColor: platform === "ios" ? backgroundF94D1B : backgroundE93400,
+    tabActiveBgColor: platform === "ios" ? "#fff" : "#fff",
 });
 

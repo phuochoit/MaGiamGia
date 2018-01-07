@@ -2,9 +2,14 @@ import React from 'react';
 import { Root } from "native-base";
 import { AppLoading, Font } from 'expo';
 import { Provider } from 'react-redux';
+import { BackHandler } from "react-native";
+import { addNavigationHelpers, NavigationActions } from "react-navigation";
 
-import store from "./src/redux/store";
-import HomeApp from "./src/components/"
+import { createStore } from "redux";
+
+import AppWithNavigationState from "./src2/navigators/"
+import AllReducer from "./src2/reducers";
+let store = createStore(AllReducer);
 
 export default class App extends React.Component {
     state = {
@@ -18,15 +23,14 @@ export default class App extends React.Component {
         this.setState({ fontLoaded: true });
     }
 
+    
     render() {
         if (!this.state.fontLoaded) {
             return (<Expo.AppLoading />);
         }
         return (
             <Provider store={store}>
-                <Root>
-                    <HomeApp />
-                </Root>
+                <AppWithNavigationState />
             </Provider>
         );
     }
