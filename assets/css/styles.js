@@ -7,6 +7,11 @@ const isIphoneX = platform === "ios" && deviceHeight === 812 && deviceWidth === 
 const is4in = 360;
 
 const logowidth = (width / 2) - 40;
+
+// define color
+export const StatusBarColor = "#2FB8FE";
+
+
 export const backgroundColorBlue = "blue";
 export const ColorFFF = "#fff";
 export const background2FB8FE = '#2FB8FE';

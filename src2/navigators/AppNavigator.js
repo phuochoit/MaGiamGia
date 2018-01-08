@@ -6,19 +6,21 @@ import { FontAwesome, MaterialCommunityIcons, MaterialIcons } from '@expo/vector
 import { myThemeFooter } from "../../assets/css/mycustomtheme";
 import { styles, background2FB8FE } from "../../assets/css/styles";
 
-import HomeContainer from "../containers/HomeContainer";
+import HomeContainer from "../containers/home/HomeContainer";
 import CouponComponent from "../components/CouponComponent";
 import ExperienceComponent from "../components/ExperienceComponent";
 import HotProductComponent from "../components/HotProductComponent";
 import ListCouponComponent from "../components/ListCouponComponent";
 
+import { HOME, COUPON, EXPERIENCE, HOTPRODUCT, LISTCOUPON } from "../values/screenName";
+
 export default (AppNavigator = TabNavigator(
     {
-        Home: { screen: HomeContainer },
-        Coupon: { screen: CouponComponent },
-        Experience: { screen: ExperienceComponent },
-        HotProduct: { screen: HotProductComponent },
-        List: { screen: ListCouponComponent },
+        HOME: { screen: HomeContainer },
+        COUPON: { screen: CouponComponent },
+        EXPERIENCE: { screen: ExperienceComponent },
+        HOTPRODUCT: { screen: HotProductComponent },
+        LISTCOUPON: { screen: ListCouponComponent },
     },
     {
         headerMode: "none",
@@ -38,7 +40,7 @@ export default (AppNavigator = TabNavigator(
                                     transparent
                                     vertical
                                     active={props.navigation.state.index === 0}
-                                    onPress={() => props.navigation.navigate("Home")}>
+                                    onPress={() => props.navigation.navigate(HOME)}>
                                     <FontAwesome
                                         active={props.navigation.state.index === 0}
                                         color={props.navigation.state.index === 0 ? background2FB8FE : '#000000'}
@@ -50,7 +52,7 @@ export default (AppNavigator = TabNavigator(
                                 <Button
                                     vertical
                                     active={props.navigation.state.index === 1}
-                                    onPress={() => props.navigation.navigate("Coupon")}
+                                    onPress={() => props.navigation.navigate(COUPON)}
                                 >
                                     <FontAwesome
                                         active={props.navigation.state.index === 1}
@@ -62,7 +64,7 @@ export default (AppNavigator = TabNavigator(
                                 <Button
                                     vertical
                                     active={props.navigation.state.index === 2}
-                                    onPress={() => props.navigation.navigate("Experience")}
+                                    onPress={() => props.navigation.navigate(EXPERIENCE)}
                                 >
                                     <MaterialIcons
                                         active={props.navigation.state.index === 2}
@@ -74,7 +76,7 @@ export default (AppNavigator = TabNavigator(
                                 <Button
                                     vertical
                                     active={props.navigation.state.index === 3}
-                                    onPress={() => props.navigation.navigate("HotProduct")}
+                                    onPress={() => props.navigation.navigate(HOTPRODUCT)}
                                 >
                                     <MaterialIcons
                                         active={props.navigation.state.index === 3}
@@ -86,7 +88,7 @@ export default (AppNavigator = TabNavigator(
                                 <Button
                                     vertical
                                     active={props.navigation.state.index === 4}
-                                    onPress={() => props.navigation.navigate("List")}
+                                    onPress={() => props.navigation.navigate(LISTCOUPON)}
                                 >
                                     <MaterialCommunityIcons
                                         active={props.navigation.state.index === 4}

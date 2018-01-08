@@ -30,7 +30,7 @@ class Nav extends React.Component {
             state: this.props.nav,
         }));
         return (
-            <AppNavigator navigation={navigation}  />
+            <AppNavigator {...this.props}  />
         );
     }
 }
