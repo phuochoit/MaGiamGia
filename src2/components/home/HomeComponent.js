@@ -7,6 +7,9 @@ import OffersComponent from "./OffersComponent";
 import TopComponent from "./TopComponent";
 
 class HomeComponent extends Component {
+    componentDidMount(){
+        this.props.onFetchTopProduct();
+    }
     render() {
         return (
             <View  style={{flex:1}}>

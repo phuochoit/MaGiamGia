@@ -3,13 +3,19 @@ import { Root } from "native-base";
 import { AppLoading, Font } from 'expo';
 import { Provider } from 'react-redux';
 import { BackHandler } from "react-native";
-import { addNavigationHelpers, NavigationActions } from "react-navigation";
-
-import { createStore } from "redux";
 
 import AppWithNavigationState from "./src2/navigators/"
+
+// redux
+import { createStore, applyMiddleware } from "redux";
 import AllReducer from "./src2/reducers";
-let store = createStore(AllReducer);
+
+// redux-saga
+import createSagaMiddleware  from "redux-saga";
+import rootSaga from "./src2/sagas/rootSaga";
+const sagaMiddleware = createSagaMiddleware();
+
+let store = createStore(AllReducer, applyMiddleware(sagaMiddleware));
 
 export default class App extends React.Component {
     state = {
@@ -35,3 +41,5 @@ export default class App extends React.Component {
         );
     }
 }
+
+sagaMiddleware.run(rootSaga);
