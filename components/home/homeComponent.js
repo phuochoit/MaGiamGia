@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View , ScrollView} from 'react-native';
+//component
+import HeaderComponent from "../headerComponent";
+import TopProductComponent from "./topProductComponent";
+import OffersInformationsComponent from "./offersInformationsComponent";
+
 class HomeComponent extends Component {
-    componentDidMount(){
-        this.props.onFetchTopProduct();
-    };
+    
     render() {
         return (
-            <Text>HomeComponent.js</Text>
+            <View>
+                <HeaderComponent iconLeft={false} title="Mã Giảm Giá" />
+                <ScrollView>
+                    <OffersInformationsComponent {...this.props} />
+                    <TopProductComponent {...this.props}/>
+                </ScrollView>
+            </View>
+            
         );
     }
 }

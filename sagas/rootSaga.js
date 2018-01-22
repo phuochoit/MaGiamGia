@@ -1,9 +1,13 @@
 // import redux-saga
-import { call, all } from "redux-saga/effects";
+import { call, all, fork  } from "redux-saga/effects";
 
 // import file
 import { watchFetchProduct } from "./topPorductSagas";
+import { watchFetchOffersInfor } from "./offersInforSaga";
 
 export default function* rootSaga() {
-    yield call(watchFetchProduct);
+    yield[
+        fork(watchFetchProduct),
+        fork(watchFetchOffersInfor)
+    ];
 }

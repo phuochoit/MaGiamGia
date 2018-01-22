@@ -1,13 +1,21 @@
 import { FETCH_TOPPRODUCT, FETCH_SUCCEEDED, FETCH_FAILED } from "../actions/actionsTypes";
 
-const topProductReducer = (Product = [], action) => {
+const initialState = {
+    error : '',
+    currentlySending: false,
+    product: []
+};
+
+const topProductReducer = (state = initialState, action) => {
     switch (action.type) {
+        case FETCH_TOPPRODUCT:
+            return { ...state, currentlySending: true }
         case FETCH_SUCCEEDED:
-            return action.topProduct;
+            return { ...state, currentlySending: false, product: action.topProduct }
         case FETCH_FAILED:
-            return [];
+            return { ...state, currentlySending: false, error: error}
         default:
-            return Product;
+            return state;
     }
 }
 
