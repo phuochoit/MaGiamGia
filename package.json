@@ -1,22 +1,22 @@
 {
-  "name": "ma-giam-gia",
-  "version": "1.1.4",
-  "description": "Cập nhật mã giảm giá zalora, voucher lazada khuyến mãi, coupon Tiki, Cdiscount, Mytour.. các trang web lớn ở VN, chia sẻ kinh nghiệm mua hàng online",
-  "author": null,
+  "name": "magiamgia",
+  "version": "2.0.0",
   "private": true,
-  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
   "dependencies": {
-    "@expo/vector-icons": "^5.2.0",
-    "axios": "^0.16.2",
-    "expo": "^21.0.0",
-    "lodash": "^4.17.4",
-    "native-base": "^2.3.2",
-    "package": "^1.0.1",
-    "react": "16.0.0-alpha.12",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-21.0.2.tar.gz",
-    "react-navigation": "^1.0.0-beta.13",
-    "react-redux": "^5.0.6",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "react": "16.2.0",
+    "react-native": "0.52.0"
+  },
+  "devDependencies": {
+    "babel-jest": "22.1.0",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.1.4",
+    "react-test-renderer": "16.2.0"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }

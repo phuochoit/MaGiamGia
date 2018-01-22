@@ -1,33 +1,57 @@
-import React from 'react';
-import { Root } from "native-base";
-import { AppLoading, Font } from 'expo';
-import { Provider } from 'react-redux';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 
-import store from "./src/redux/store";
-import HomeApp from "./src/components/"
+import React, { Component } from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
 
-export default class App extends React.Component {
-    state = {
-        fontLoaded: false,
-    };
-    async componentWillMount() {
-        await Expo.Font.loadAsync({
-            Roboto: require('./node_modules/native-base/Fonts/Roboto.ttf'),
-            Roboto_medium: require('./node_modules/native-base/Fonts/Roboto_medium.ttf'),
-        });
-        this.setState({ fontLoaded: true });
-    }
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' +
+    'Cmd+D or shake for dev menu',
+  android: 'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
-    render() {
-        if (!this.state.fontLoaded) {
-            return (<Expo.AppLoading />);
-        }
-        return (
-            <Provider store={store}>
-                <Root>
-                    <HomeApp />
-                </Root>
-            </Provider>
-        );
-    }
+export default class App extends Component<{}> {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          {instructions}
+        </Text>
+      </View>
+    );
+  }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});
