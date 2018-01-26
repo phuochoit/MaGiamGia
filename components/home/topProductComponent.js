@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList, ActivityIndicator, Image} from 'react-native';
-import { Divider, Button, h1} from "react-native-elements";
+
 //component
-// import HeaderComponent from "../headerComponent";
+import ItemsProduct from "./ItemsProduct";
+
+// Styles
+import {styles} from "../../assets/styles";
 
 class TopProductComponent extends Component {
     componentDidMount() {
@@ -14,12 +17,12 @@ class TopProductComponent extends Component {
         }
         
         return (
-            <View>
-                <Text>TopProductComponent</Text>
+            <View style={[styles.flex1]}>
+                <Text style={[styles.margin_wrapper, styles.title]}>Sản Phẩm Bán Chạy Nhất</Text>
                 <FlatList 
+                    style={{ marginHorizontal:10}}
                     ListHeaderComponent={() => { return (<View />); }} 
                     ListFooterComponent={() => { return (<View/>);}}
-                    ItemSeparatorComponent={() => {return (<Divider style={{ backgroundColor: 'blue' }} />)}}
                     data={this.props.topProduct.product.data }
                     renderItem={({ item, index }) => {
                         return (
@@ -32,32 +35,4 @@ class TopProductComponent extends Component {
         );
     }
 }
-
-class ItemsProduct extends Component {
-    render() {
-        const {item} = this.props;
-        return (
-            <View style={{ flex: 0, flexDirection: 'row'}}>
-                <View style={{  flex:2}}>
-                    <Image 
-                        source={{ uri: item.image }} 
-                        style={{width:100, height:100}}
-                        resizeMode="cover"
-                        />
-                </View>
-                <View style={{  flex: 8 }}>
-                    <Text h1>{item.name}</Text>
-                    <Text>{item.price} - {item.discount}</Text>
-                    <Button
-                        raised
-                        icon={{ name: 'cached' }}
-                        title='BUTTON WITH ICON' />
-
-                </View>
-            </View>
-        );
-    }
-}
-
-
 export default TopProductComponent;

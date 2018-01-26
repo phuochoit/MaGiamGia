@@ -59,7 +59,7 @@ export default (AppNavigator = TabNavigator(
             style: {
                 backgroundColor: TitleColor,
                 borderTopColor: background,
-                borderTopWidth:1,
+                borderTopWidth:2,
                 borderStyle: 'solid'
             },
             indicatorStyle:{

@@ -3,7 +3,10 @@ import { Text } from 'react-native';
 class couponComponent extends Component {
     render() {
         return (
-            <Text>couponComponent.js</Text>
+            <View style={[styles.wrapper]}>
+                <HeaderComponent iconLeft={false} title="Chương Trình Giảm Giá" />
+                
+            </View>
         );
     }
 }

@@ -10,7 +10,7 @@ class HeaderComponent extends Component {
         return (
             <Header
                 leftComponent={this.props.iconLeft ? { icon: 'menu', color: TitleColor } : <View />}
-                centerComponent={{ text: this.props.title, style: { color: TitleColor } }}
+                centerComponent={{ text: this.props.title, style: { color: TitleColor , fontSize:18} }}
                 rightComponent={<View />}
                 statusBarProps={{ barStyle: 'light-content', backgroundColor: backgroundStatusColor }}
                 outerContainerStyles={{ backgroundColor: background, height: headerHight }}
