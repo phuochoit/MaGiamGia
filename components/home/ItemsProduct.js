@@ -21,14 +21,13 @@ class ItemsProduct extends Component {
 
         return (
             <View style={{ flex: 0, flexDirection: 'row', padding: 10, borderColor: '#2FB8FE', borderWidth: 2, borderStyle: 'solid', marginBottom: 10}}>
-                <View style={{ flex: 2 }}>
+                <View style={{ flex: 3, justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
                     <Image
                         source={{ uri: item.image }}
-                        style={{ width: 100, height: 100, resizeMode:'contain' }}
-                        // resizeMode="cover"
+                        style={{ width: 100, height: 100, resizeMode:'contain' , }}
                     />
                 </View>
-                <View style={{ flex: 8 }}>
+                <View style={{ flex: 7 }}>
                     <Text h1>{item.name}</Text>
                     <Text>{strprice}</Text>
                     <Button

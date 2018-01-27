@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { View,Text } from 'react-native';
+// component
+import HeaderComponent  from "../headerComponent";
+//styles
+import { styles } from "../../assets/styles";
+
+
 class couponComponent extends Component {
     render() {
         return (
