@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ActivityIndicator, Image,TouchableOpacity } from 'react-native';
-import { Divider, Button, h1 } from "react-native-elements";
+import { Text, View, ActivityIndicator, Image, TouchableOpacity, Linking } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { isUndefined, map} from "lodash";
 
@@ -11,22 +10,17 @@ class OffersInformationsComponent extends Component {
     constructor(props){
         super(props);
         this.state = {};
-        this._onPress = this._onPress.bind(this);
+
     }
-    componentWillMount() {
-        this.props.onFetchOffersInfor();
+    async componentWillMount() {
+        await this.props.onFetchOffersInfor();
     }
     componentDidMount() {
-        
     };
-    _onPress(items){
-        console.log('items', items);
-    }
     render() {
         if (this.props.offersInfor.currentlySending) {
             return <ActivityIndicator size="large" color="#0000ff" />
         }
-
         if (!isUndefined(this.props.offersInfor.offers.data)) {
             swiper = (
                 <Swiper
@@ -41,7 +35,7 @@ class OffersInformationsComponent extends Component {
                         map(this.props.offersInfor.offers.data, (val, key) => (
                             <View key={val.id}>
                                 <TouchableOpacity key={val.id} onPress={() => {
-                                    console.log('val--', val);
+                                    Linking.openURL(val.aff_link).catch(err => console.error('An error occurred', err));
                                 }}>
                                     <Image
                                         source={{ uri: val.image }}

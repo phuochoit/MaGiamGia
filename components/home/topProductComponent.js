@@ -8,8 +8,10 @@ import ItemsProduct from "./ItemsProduct";
 import {styles} from "../../assets/styles";
 
 class TopProductComponent extends Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.onFetchTopProduct();
+    }
+    componentDidMount() {
     };
     render() {
         if (this.props.topProduct.currentlySending){

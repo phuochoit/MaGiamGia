@@ -11,7 +11,6 @@ function* getTopProductFromApi() {
             'Authorization': strAuthorization
         }
     });
-    console.log('topProduct', topProduct);
     const topProduct = yield  respone.status === 200 ? JSON.parse(respone._bodyText) : [];
     return topProduct;
 }
@@ -25,7 +24,6 @@ function* getOffersInformationsFromApi() {
             'Authorization': strAuthorization
         }
     });
-    console.log('respone', respone);
     const offers = yield respone.status === 200 ? JSON.parse(respone._bodyText) : [];
     return offers;
 }
