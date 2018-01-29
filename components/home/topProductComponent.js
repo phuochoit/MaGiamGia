@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, ActivityIndicator, Image} from 'react-native';
+import { Text, View, FlatList} from 'react-native';
 
 //component
 import ItemsProduct from "./ItemsProduct";
-
+import IsloadingComponent from "../isloading";
 // Styles
 import {styles} from "../../assets/styles";
 
@@ -15,14 +15,14 @@ class TopProductComponent extends Component {
     };
     render() {
         if (this.props.topProduct.currentlySending){
-            return <ActivityIndicator size="large" color="#0000ff" />
+            return <IsloadingComponent />
         }
         
         return (
             <View style={[styles.flex1]}>
                 <Text style={[styles.margin_wrapper, styles.title]}>Sản Phẩm Bán Chạy Nhất</Text>
                 <FlatList 
-                    style={{ marginHorizontal:10}}
+                    style={styles.mghorizontal}
                     ListHeaderComponent={() => { return (<View />); }} 
                     ListFooterComponent={() => { return (<View/>);}}
                     data={this.props.topProduct.product.data }

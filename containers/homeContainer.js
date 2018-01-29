@@ -9,7 +9,6 @@ import { FetchTopProductAction } from "../actions/actionTopPorduct";
 import { FetchOffersInforAction } from "../actions/actionOffersInformations";
 
 const mapStateToProps = (state) => {
-    console.log('this.props',state);
     return {
         topProduct: state.topProduct,
         offersInfor: state.offersInfor

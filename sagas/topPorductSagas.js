@@ -12,6 +12,6 @@ function* fetchTopProduct() {
     }
 }
 
-export function* watchFetchProduct() {
+export function* watchFetchTopProduct() {
     yield takeLatest(FETCH_TOPPRODUCT, fetchTopProduct);
 }

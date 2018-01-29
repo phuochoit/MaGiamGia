@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, ActivityIndicator, Image, TouchableOpacity, Linking } from 'react-native';
+import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { isUndefined, map} from "lodash";
 
 // style
 import { styles} from "../../assets/styles";
+
+// component
+import IsloadingComponent from "../isloading";
 
 class OffersInformationsComponent extends Component {
     constructor(props){
@@ -19,7 +22,7 @@ class OffersInformationsComponent extends Component {
     };
     render() {
         if (this.props.offersInfor.currentlySending) {
-            return <ActivityIndicator size="large" color="#0000ff" />
+            return <IsloadingComponent />
         }
         if (!isUndefined(this.props.offersInfor.offers.data)) {
             swiper = (

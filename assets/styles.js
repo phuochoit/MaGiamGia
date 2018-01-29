@@ -4,6 +4,7 @@ const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 const platform = Platform.OS;
 export const headerHight = Platform === 'ios' ? 70 : 70 - 24;
+export const heightNoHeaderAndTab = deviceHeight - (Platform === 'ios' ? 70 : 70 - 24) - 75;
 export const backgroundStatusColor = "#2fa4fe";
 export const background = "#2FB8FE";
 export const TitleColor = "#fff";
@@ -51,6 +52,12 @@ export const styles = StyleSheet.create({
     },
     pdright: {
         paddingRight: 10
+    },
+    mgtop: {
+        marginTop: 10
+    },
+    mghorizontal: {
+        marginHorizontal: 10  
     },
     margin_wrapper: {
         marginHorizontal: 10

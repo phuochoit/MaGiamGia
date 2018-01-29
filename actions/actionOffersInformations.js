@@ -17,7 +17,7 @@ export function FetchSuccessOffersInforAction(offers) {
 
 function FetchFaileAction(error) {
     return {
-        type: FETCH_SUCCEEDED,
+        type: FETCH_FAILED,
         error: error
     }
 }

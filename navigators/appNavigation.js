@@ -6,11 +6,12 @@ import { Icon } from 'react-native-elements';
 import { HOME, COUPON, CATEGORY, HOTPRODUCT, LISTCOUPON } from "../values/screenName";
 
 //component
-// import homeComponent from "../components/home/homeComponent";
-import HomeContainer from "../containers/homeContainer";
 import categoryComponent from "../components/category/categoryComponent";
 import couponComponent from "../components/coupon/couponComponent";
-import productComponent from "../components/product/productComponent";
+
+// container
+import HomeContainer from "../containers/homeContainer";
+import ProductContainer  from "../containers/productContainer";
 
 // styles
 import { background, TitleColor, TextColor } from "../assets/styles";
@@ -37,7 +38,7 @@ export default (AppNavigator = TabNavigator(
                 tabBarIcon: ({ tintColor }) => (<Icon name='rate-review' type='MaterialIcons' color={tintColor} />)
             } },
         HOTPRODUCT: {
-            screen: productComponent,
+            screen: ProductContainer,
             navigationOptions: {
                 tabBarLabel: "HOTPRODUCT",
                 tabBarIcon: ({ tintColor }) => (<Icon name='whatshot' type='MaterialIcons' color={tintColor}/>)
