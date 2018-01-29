@@ -5,7 +5,7 @@ import { call, all, fork  } from "redux-saga/effects";
 import { watchFetchTopProduct } from "./topPorductSagas";
 import { watchFetchOffersInfor } from "./offersInforSaga";
 import { watchFetchProduct, watchFetchMoreProduct } from "./porductSagas";
-
+import { watchFetchConnected } from "./connectedSaga";
 export default function* rootSaga() {
     yield[
         fork(watchFetchTopProduct),
@@ -14,5 +14,8 @@ export default function* rootSaga() {
     yield [
         fork(watchFetchProduct),
         fork(watchFetchMoreProduct),
+    ];
+    yield [
+        fork(watchFetchConnected)
     ]
 }

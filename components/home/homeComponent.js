@@ -4,11 +4,21 @@ import { Text, View , ScrollView} from 'react-native';
 import HeaderComponent from "../headerComponent";
 import TopProductComponent from "./topProductComponent";
 import OffersInformationsComponent from "./offersInformationsComponent";
-import IsloadingComponent  from "../isloading";
+import IsConnectedContainer  from "../../containers/isConnectedContainer";
 //style
 import { styles } from "../../assets/styles";
 class HomeComponent extends Component {
+    constructor(props){
+        super(props);
+        this.state = {};
+        this.props.onfetchNetConnected();
+    }
     render() {
+        if (!this.props.isConnected){
+            return (
+                <IsConnectedContainer iconLeft={false} title="Mã Giảm Giá" />
+            );
+        }
         return (
             <View style={[styles.wrapper]}>
                 <HeaderComponent iconLeft={false} title="Mã Giảm Giá" />

@@ -57,10 +57,14 @@ export const styles = StyleSheet.create({
         marginTop: 10
     },
     mghorizontal: {
-        marginHorizontal: 10  
+        marginHorizontal: 10
     },
     margin_wrapper: {
         marginHorizontal: 10
+    },
+    jcc_aic: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     title: {
         fontSize: 20,
@@ -115,5 +119,15 @@ export const styles = StyleSheet.create({
         alignItems: 'flex-end',
         alignSelf: 'flex-end',
         justifyContent: 'flex-end'
+    },
+    //isConnected
+    wrapper_is_connected: {
+        backgroundColor: TitleColor
+    },
+    is_connected_icon: {
+        marginBottom: 15
+    },
+    is_connected_text: {
+        marginBottom: 5
     }
 });

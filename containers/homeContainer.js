@@ -7,9 +7,11 @@ import HomeComponent from '../components/home/homeComponent';
 // action
 import { FetchTopProductAction } from "../actions/actionTopPorduct";
 import { FetchOffersInforAction } from "../actions/actionOffersInformations";
+import { fetchNetConnected } from "../actions/actionConnected";
 
 const mapStateToProps = (state) => {
     return {
+        isConnected: state.isConnected.isConnected,
         topProduct: state.topProduct,
         offersInfor: state.offersInfor
     }
@@ -17,6 +19,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        onfetchNetConnected: () => {
+            dispatch(fetchNetConnected())
+        },
         onFetchTopProduct: () => {
             dispatch(FetchTopProductAction())
         },

@@ -7,8 +7,8 @@ import { styles, background, heightNoHeaderAndTab} from "../assets/styles"
 class IsloadingComponent extends Component {
     render() {
         return (
-            <View style={{flex:1, backgroundColor: '#fff'}}>
-                <View style={{ flex: 1,justifyContent: 'center'}}>
+            <View style={[styles.flex1, styles.wrapper_is_connected]}>
+                <View style={[styles.flex1, styles.jcc_aic]}>
                     <ActivityIndicator size="large" color={background} />
                 </View>
             </View>
