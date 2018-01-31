@@ -7,14 +7,17 @@ import { HOME, COUPON, CATEGORY, HOTPRODUCT, LISTCOUPON } from "../values/screen
 
 //component
 import categoryComponent from "../components/category/categoryComponent";
-import couponComponent from "../components/coupon/couponComponent";
 
 // container
 import HomeContainer from "../containers/homeContainer";
 import ProductContainer  from "../containers/productContainer";
 
+// StackNavigator
+import CouponsStackNavigator from "./couponStackNavigator";
+
 // styles
 import { background, TitleColor, TextColor } from "../assets/styles";
+
 export default (AppNavigator = TabNavigator(
     {
         HOME: {
@@ -25,7 +28,7 @@ export default (AppNavigator = TabNavigator(
             } 
         },
         COUPON: {
-            screen: couponComponent,
+            screen: CouponsStackNavigator,
             navigationOptions: {
                 tabBarLabel: "COUPON",
                 tabBarIcon: ({ tintColor }) => (<Icon name='shopping-cart' type='Entypo' color={tintColor} />)

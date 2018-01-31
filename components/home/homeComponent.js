@@ -21,7 +21,7 @@ class HomeComponent extends Component {
         }
         return (
             <View style={[styles.wrapper]}>
-                <HeaderComponent iconLeft={false} title="Mã Giảm Giá" />
+                <HeaderComponent iconLeft={false} title="Mã Giảm Giá" navigation={this.props.navigation}/>
                 <ScrollView style={styles.flex0}>
                     <OffersInformationsComponent {...this.props} />
                     <TopProductComponent {...this.props}/>

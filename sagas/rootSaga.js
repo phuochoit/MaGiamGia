@@ -1,21 +1,20 @@
 // import redux-saga
-import { call, all, fork  } from "redux-saga/effects";
+import { all, fork  } from "redux-saga/effects";
 
 // import file
 import { watchFetchTopProduct } from "./topPorductSagas";
 import { watchFetchOffersInfor } from "./offersInforSaga";
 import { watchFetchProduct, watchFetchMoreProduct } from "./porductSagas";
 import { watchFetchConnected } from "./connectedSaga";
+import { watchFetchCouponShop } from "./coupoShopSaga";
+
 export default function* rootSaga() {
-    yield[
+    yield all([
         fork(watchFetchTopProduct),
         fork(watchFetchOffersInfor),
-    ];
-    yield [
         fork(watchFetchProduct),
         fork(watchFetchMoreProduct),
-    ];
-    yield [
-        fork(watchFetchConnected)
-    ]
+        fork(watchFetchConnected),
+        fork(watchFetchCouponShop)
+    ]);
 }

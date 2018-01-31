@@ -35,7 +35,7 @@ class ProductComponent extends Component {
 
         return (
             <View style={[styles.wrapper]}>
-                <HeaderComponent iconLeft={false} title="Sản Phẩm Bán Chạy" />
+                <HeaderComponent iconLeft={false} title="Sản Phẩm Bán Chạy" navigation={this.props.navigation} />
                 <FlatList
                     style={[styles.mghorizontal, styles.mgtop]}
                     ListHeaderComponent={() => { return (<View />); }}

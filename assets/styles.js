@@ -129,5 +129,18 @@ export const styles = StyleSheet.create({
     },
     is_connected_text: {
         marginBottom: 5
+    },
+    //
+    coupon_wrapper_items: {
+        backgroundColor: '#fff',
+        borderColor: background,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
+        padding: 15,
+        marginHorizontal: 5 
     }
 });
