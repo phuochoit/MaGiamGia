@@ -42,7 +42,7 @@ export function FetchSuccessCouponListAction(couponList) {
 export function FetchSuccessCouponTabListAction(couponList) {
     return {
         type: FETCH_COUPON_TAB_LIST_SUCCEEDED,
-        couponList: couponList
+        couponList: couponList,      
     }
 }
 

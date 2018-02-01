@@ -9,7 +9,11 @@ class CouponListDTTabComponent extends Component {
 
     }
     componentDidMount() {
-        this.props._onFetchTabCouponList(DTMTB);
+        let action = {
+            merchant : this.props.navigation.state.params.merchant,
+            category: DTMTB
+        };
+        this.props._onFetchTabCouponList(action);
     }
 
     render() {
