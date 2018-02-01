@@ -52,7 +52,7 @@ class CouponComponent extends Component {
         return (
 
             <View style={[styles.wrapper]}>
-                <HeaderComponent iconLeft={false} title="Chương Trình Giảm Giá" navigation={this.props.navigation}/>
+                <HeaderComponent iconLeft={false} title="Chương Trình Khuyến Mãi" navigation={this.props.navigation}/>
                 <FlatList
                     style={[styles.mghorizontal, styles.mgtop]}
                     ListHeaderComponent={() => { return (<View />); }}

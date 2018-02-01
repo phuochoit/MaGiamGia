@@ -3,7 +3,7 @@ export default shops = [
         "id": 1,
         "name": "Lazada",
         "image": "https://static.accesstrade.vn/logos/lazada_icon.jpg",
-        'merchant': "lazadaapp"
+        'merchant': "lazada"
     },
     {
         "id": 2,

@@ -25,30 +25,30 @@ import CouponListVDTabComponent from "./couponListVDTabComponent";
 import IsConnectedContainer from "../../containers/isConnectedContainer";
 
 //styles
-import { styles } from "../../assets/styles";
+import { styles, background, backgroundWhite } from "../../assets/styles";
 
 class CouponListComponent extends Component {
     componentWillMount() {
-        
+        // this.props._onFetchCouponList('lazadaapp');
     }
     render() {
         const { navigate, state } = this.props.navigation;
-        const componentTitle =`Chương Trình Giảm Giá ${state.params.title}`;
+        const componentTitle =`Chương Trình Khuyến Mãi ${state.params.title}`;
         return (
             <View style={[styles.wrapper, styles.flex1]}>
                 <HeaderComponent iconLeft={true} title={componentTitle} navigation={this.props.navigation}/>
                 
                 <ScrollableTabView
-                    style={{ flex: 1, backgroundColor: '#fff', borderBottomColor: '#2FB8FE'}}
+                    style={styles.wrapper_coupon_list}
                     initialPage={0}
                     tabBarPosition="top"
-                    tabBarBackgroundColor='#fff'
-                    tabBarActiveTextColor='#2FB8FE'
-                    tabBarUnderlineStyle={{ backgroundColor: '#2FB8FE'}}
-                    renderTabBar={() => <ScrollableTabBar style={{ backgroundColor: '#fff', borderBottomColor: '#2FB8FE' }}/>}
+                    tabBarBackgroundColor={backgroundWhite}
+                    tabBarActiveTextColor={background}
+                    tabBarUnderlineStyle={styles.coupon_list_tabBarUnderlineStyle}
+                    renderTabBar={() => <ScrollableTabBar style={styles.coupon_list_renderTabBar}/>}
                 >
-                    <CouponListAllTabComponent tabLabel='Tất Cả' />
-                    <CouponListDTTabComponent tabLabel='Điện thoại - Máy tính bảng' />
+                    <CouponListAllTabComponent tabLabel='Tất Cả' _onFetchCouponList={this.props._onFetchCouponList} navigation={this.props.navigation}/>
+                    <CouponListDTTabComponent tabLabel='Điện thoại - Máy tính bảng' _onFetchTabCouponList={this.props._onFetchTabCouponList} navigation={this.props.navigation} />
                     <CouponListTATabComponent tabLabel='Tivi - Âm thanh' />
                     <CouponListMLPTabComponent tabLabel='Máy tính - Laptop - Phụ kiện' />
                     <CouponListMAMQPTabComponent tabLabel='Máy ảnh - Máy quay phim' />
@@ -63,8 +63,6 @@ class CouponListComponent extends Component {
                     <CouponListSVQTabComponent tabLabel='Sách - VPP - Quà tặng' />
                 </ScrollableTabView>
             </View>
-
-            
         );
     }
 }

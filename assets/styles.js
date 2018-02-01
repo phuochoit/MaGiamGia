@@ -7,6 +7,7 @@ export const headerHight = Platform === 'ios' ? 70 : 70 - 24;
 export const heightNoHeaderAndTab = deviceHeight - (Platform === 'ios' ? 70 : 70 - 24) - 75;
 export const backgroundStatusColor = "#2fa4fe";
 export const background = "#2FB8FE";
+export const backgroundWhite = "#fff";
 export const TitleColor = "#fff";
 export const TextColor = "#000"
 export const TextColor2 = "#333";
@@ -84,7 +85,7 @@ export const styles = StyleSheet.create({
     wrapper_product_item: {
         flexDirection: 'row',
         padding: 10,
-        borderColor: '#2FB8FE',
+        borderColor: background,
         borderWidth: 2,
         borderStyle: 'solid',
         marginBottom: 10
@@ -122,7 +123,7 @@ export const styles = StyleSheet.create({
     },
     //isConnected
     wrapper_is_connected: {
-        backgroundColor: TitleColor
+        backgroundColor: backgroundWhite
     },
     is_connected_icon: {
         marginBottom: 15
@@ -132,7 +133,7 @@ export const styles = StyleSheet.create({
     },
     //
     coupon_wrapper_items: {
-        backgroundColor: '#fff',
+        backgroundColor: backgroundWhite,
         borderColor: background,
         borderWidth: 1,
         borderStyle: 'solid',
@@ -142,5 +143,19 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
         padding: 15,
         marginHorizontal: 5 
+    },
+
+    //
+    wrapper_coupon_list: { 
+        flex: 1, 
+        backgroundColor: backgroundWhite,
+        borderBottomColor:background
+    },
+    coupon_list_tabBarUnderlineStyle:{
+        backgroundColor: background
+    },
+    coupon_list_renderTabBar : {
+        backgroundColor: backgroundWhite, 
+        borderBottomColor: background
     }
 });

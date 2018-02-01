@@ -1,6 +1,6 @@
 import { strAccept, strAuthorization } from "../../values/strings";
-const urlProduct = 'https://api.accesstrade.vn/v1/datafeeds?campaign=lazada&status_discount=1&limit=10&offset=1';
-const urlMoreProduct = 'https://api.accesstrade.vn/v1/datafeeds?campaign=lazada&status_discount=1&limit=10&offset=';
+const urlProduct = 'https://api.accesstrade.vn/v1/datafeeds?status_discount=1&limit=10&offset=1';
+const urlMoreProduct = 'https://api.accesstrade.vn/v1/datafeeds?status_discount=1&limit=10&offset=';
 
 function* getProductFromApi() {
     const respone = yield fetch(urlProduct, {
