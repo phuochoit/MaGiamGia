@@ -12,12 +12,15 @@ import IsConnectedContainer from "../../containers/isConnectedContainer";
 //styles
 import { styles, categoryBannerHeight} from "../../assets/styles";
 
+//
+import { CATEGORYLISTDETAIL } from "../../values/screenName";
 class CategoryComponent extends Component {
     constructor(props) {
         super(props);
         this.state = ({
             imageLoading: true
         });
+        // this._onPressGoDetail = this._onPressGoDetail.bind(this);
     }
     componentWillMount() {
         this.props._onFetchCategory();
@@ -25,11 +28,10 @@ class CategoryComponent extends Component {
     _imageLoadingError() {
         this.setState({ imageLoading: false });
     }
-    _onPressGoDetail(){
-        console.log('_onPressGoDetail');
+    _onPressGoDetail(item){
+        this.props.navigation.navigate(CATEGORYLISTDETAIL, item);
     }
     render() {
-        console.log('this.props', this.props.category.category);
         if (!this.props.isConnected) {
             return (
                 <IsConnectedContainer iconLeft={false} title="Chương Trình Giảm Giá" />
@@ -63,7 +65,7 @@ class CategoryComponent extends Component {
                                 featured
                                 containerStyle={styles.containerStyle_category}
                                 height={categoryBannerHeight}
-                                onPress={this._onPressGoDetail.bind(this)}
+                                onPress={this._onPressGoDetail.bind(this, item)}
                             />
                         );
                     }}

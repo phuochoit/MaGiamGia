@@ -60,6 +60,7 @@ const couponListReducer = (state = initialState, action) => {
         case FETCH_COUPON_LIST_SUCCEEDED:
             return {
                 ...state, currentlySending: false, couponList: {
+                    ...state.couponList,
                     all: action.couponList.data
                 }
             }
