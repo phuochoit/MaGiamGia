@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList } from 'react-native';
-
+import { isEmpty } from "lodash";
 // styles
 import { styles } from "../../assets/styles";
 //component
 import IsloadingComponent from "../isloading";
 import ItemsCouponListComponent from "./itemsCouponListComponent";
+import EmptyComponent from "../emptyComponent";
 // container
 import IsConnectedContainer from "../../containers/isConnectedContainer";
 
@@ -42,6 +43,9 @@ class CouponListAllTabComponent extends Component {
             return <IsloadingComponent />
         }
 
+        if (isEmpty(this.props.couponList.couponList.all)){
+            return <EmptyComponent message='Không Có Chương Trình Khuyến Mãi Nào' />
+        }
         return (
             <View style={[styles.wrapper]}>
                 <FlatList

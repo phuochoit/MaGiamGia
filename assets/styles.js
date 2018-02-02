@@ -57,6 +57,9 @@ export const styles = StyleSheet.create({
     pdall:{
         padding: 10
     },
+    pdhorizontal:{
+        paddingHorizontal:10
+    },
     mgtop: {
         marginTop: 10
     },
@@ -232,5 +235,15 @@ export const styles = StyleSheet.create({
         justifyContent: 'center', 
         color: '#fff', 
         textAlign: 'center' 
+    },
+    // empty component
+    title_empty: { 
+        fontSize: 20, 
+        marginVertical: 5, 
+        color: '#333' 
+    },
+    message_empty: { 
+        fontSize: 16, 
+        color: '#333' 
     }
 }); 

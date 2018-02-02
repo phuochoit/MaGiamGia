@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, ActivityIndicator } from "react-native";
 
 //style
-import { styles, background, heightNoHeaderAndTab} from "../assets/styles"
+import { styles, background} from "../assets/styles"
 
 class IsloadingComponent extends Component {
     render() {

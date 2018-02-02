@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList} from 'react-native';
+import { isEmpty } from "lodash";
 
 // styles
 import { styles } from "../../assets/styles";
 //component
 import IsloadingComponent from "../isloading";
 import ItemsCouponListComponent from "./itemsCouponListComponent";
+import EmptyComponent from "../emptyComponent";
 
 // string
 import { ALL, COUPON } from "../../values/strings";
@@ -28,7 +30,11 @@ class CouponListCouponTabComponent extends Component {
         };
         this.props._onFetchCouponListTab(action);
     }
+    
     render() {
+        if (isEmpty(this.props.couponList.couponList.coupon)) {
+            return <EmptyComponent message='Không Có Chương Mã Giảm Giá Nào' />
+        }
         return (
             <View style={[styles.wrapper]}>
                 <FlatList
