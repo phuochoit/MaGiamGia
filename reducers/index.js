@@ -6,6 +6,7 @@ import productReducer from "./productReducer";
 import connectedReducer from "./connectedReducer";
 import couponShopReducer from "./couponShopReducer";
 import couponListReducer from "./couponListReducer";
+import categoryReducer from "./categoryReducer";
 
 const AllReducer = combineReducers({
     isConnected: connectedReducer,
@@ -13,7 +14,8 @@ const AllReducer = combineReducers({
     offersInfor: offersInforReducer,
     product: productReducer,
     couponShop: couponShopReducer,
-    couponList: couponListReducer
+    couponList: couponListReducer,
+    category: categoryReducer,
 });
 
 export default AllReducer;

@@ -8,6 +8,7 @@ import { watchFetchProduct, watchFetchMoreProduct } from "./porductSagas";
 import { watchFetchConnected } from "./connectedSaga";
 import { watchFetchCouponShop } from "./coupoShopSaga";
 import { watchFetchCouponList, watchFetchCouponTabList, watchFetchTabCouponTabList } from "./couponListSaga";
+import { watchFetchCategorySaga } from "./categorySaga";
 
 export default function* rootSaga() {
     yield all([
@@ -19,6 +20,7 @@ export default function* rootSaga() {
         fork(watchFetchCouponShop),
         fork(watchFetchCouponList),
         fork(watchFetchTabCouponTabList),
-        fork(watchFetchCouponTabList)
+        fork(watchFetchCouponTabList),
+        fork(watchFetchCategorySaga),
     ]);
 }

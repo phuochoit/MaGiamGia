@@ -14,7 +14,7 @@ import ProductContainer  from "../containers/productContainer";
 
 // StackNavigator
 import CouponsStackNavigator from "./couponStackNavigator";
-
+import CategoryStackNavigator from "./categoryStackNavigator";
 // styles
 import { background, TitleColor, TextColor } from "../assets/styles";
 
@@ -35,7 +35,7 @@ export default (AppNavigator = TabNavigator(
             }
         },
         CATEGORY: {
-            screen: categoryComponent,
+            screen: CategoryStackNavigator,
             navigationOptions: {
                 tabBarLabel: "CATEGORY",
                 tabBarIcon: ({ tintColor }) => (<Icon name='rate-review' type='MaterialIcons' color={tintColor} />)
@@ -53,7 +53,7 @@ export default (AppNavigator = TabNavigator(
         tabBarPosition: "bottom",
         animationEnabled: true,
         lazyLoad: true,
-        order: ['COUPON', 'HOME', 'CATEGORY','HOTPRODUCT'],
+        order: ['CATEGORY','COUPON', 'HOME', 'HOTPRODUCT'],
         tabBarOptions:{
             showIcon: true,
             showLabel: false,

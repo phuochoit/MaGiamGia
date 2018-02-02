@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 // component
 import HeaderComponent from "../headerComponent";
@@ -11,12 +11,21 @@ import IsConnectedContainer from "../../containers/isConnectedContainer";
 //styles
 import { styles } from "../../assets/styles";
 
-class categoryComponent extends Component {
+class CategoryComponent extends Component {
+    constructor(props){
+        super(props);
+    }
+    componentWillMount() {
+        this.props._onFetchCategory();
+    }
     render() {
         return (
-            <Text>categoryComponent.js</Text>
+            <View style={[styles.wrapper]}>
+                <HeaderComponent iconLeft={false} title="Danh Mục Khuyến Mãi" navigation={this.props.navigation} />
+                
+            </View>
         );
     }
 }
 
-export default categoryComponent;
+export default CategoryComponent;
