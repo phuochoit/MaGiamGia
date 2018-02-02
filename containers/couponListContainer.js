@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 import CouponListComponent from "../components/coupon/couponListComponent";
 
 // action
-import { FetchCouponListAction, FetchCouponTabListAction} from "../actions/actionCouponList";
+import { FetchCouponListAction, FetchCouponTabListAction, FetchTabCouponListAction} from "../actions/actionCouponList";
 
 const mapStateToProps = (state) => {
+    console.log('state---', state);
     return {
         couponList: state.couponList,
         isConnected: state.isConnected.isConnected,
@@ -18,6 +19,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         _onFetchCouponList: (merchant) => {
             dispatch(FetchCouponListAction(merchant))
+        },
+        _onFetchCouponListTab: (action) => {
+            dispatch(FetchTabCouponListAction(action))
         },
         _onFetchTabCouponList: (action) => {
             dispatch(FetchCouponTabListAction(action))

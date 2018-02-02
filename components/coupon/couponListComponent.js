@@ -19,7 +19,6 @@ import { styles, background, backgroundWhite } from "../../assets/styles";
 
 class CouponListComponent extends Component {
     componentWillMount() {
-        // this.props._onFetchCouponList('lazadaapp');
     }
     render() {
         const { navigate, state } = this.props.navigation;
@@ -38,8 +37,8 @@ class CouponListComponent extends Component {
                     renderTabBar={() => <ScrollableTabBar style={styles.coupon_list_renderTabBar}/>}
                 >
                     <CouponListAllTabComponent tabLabel='Tất Cả' {...this.props} />
-                    <CouponListCouponTabComponent tabLabel='Mã giảm giá' _onFetchTabCouponList={this.props._onFetchTabCouponList} navigation={this.props.navigation} />
-                    <CouponListSaleTabComponent tabLabel='Chương trình khuyến Mãi' />
+                    <CouponListCouponTabComponent tabLabel='Mã giảm giá' {...this.props} />
+                    <CouponListSaleTabComponent tabLabel='Chương trình khuyến Mãi' {...this.props}/>
                 </ScrollableTabView>
             </View>
         );

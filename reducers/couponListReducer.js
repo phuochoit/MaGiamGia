@@ -1,6 +1,6 @@
-import { isEmpty } from "lodash";
+import { filter , isEmpty} from "lodash";
 
-import { FETCH_COUPON_LIST_SUCCEEDED, FETCH_COUPON_LIST_FAILED, FETCH_COUPON_LIST_MORE_SUCCEEDED, FETCH_COUPON_LIST_MORE_TAB_SUCCEEDED, FETCH_COUPON_LIST, FETCH_COUPON_LIST_MORE, FETCH_COUPON_LIST_MORE_TAB, FETCH_COUPON_TAB_LIST_SUCCEEDED, FETCH_COUPON_TAB_LIST } from "../actions/actionsTypes";
+import { FETCH_COUPON_LIST, FETCH_COUPON_TAB_LIST, FETCH_TAB_COUPON_LIST, FETCH_COUPON_LIST_SUCCEEDED, FETCH_COUPON_TAB_LIST_SUCCEEDED, FETCH_COUPON_LIST_FAILED, FETCH_TAB_COUPON_LIST_SUCCEEDED } from "../actions/actionsTypes";
 
 const initialState = {
     error: '',
@@ -8,7 +8,8 @@ const initialState = {
     currentlyTabSending: false,
     couponList: {
         all: [],// all
-        dtmtb:[],// dien thoai may tinh bang
+        coupon:[],// có mã giảm giá
+        sale: [] // chương trình khuyến mãi
     }
 };
 
@@ -19,15 +20,37 @@ const couponListReducer = (state = initialState, action) => {
         case FETCH_COUPON_TAB_LIST:
             return { ...state, currentlyTabSending: true }
         case FETCH_COUPON_TAB_LIST_SUCCEEDED:
-            if (!isEmpty(action.couponList.data)){
-                switch (action.tabname) {
-                    case 'dien-thoai-may-tinh-bang':
-                        return {
-                            ...state, currentlyTabSending: false, couponList: {
-                                ...state.couponList,
-                                dtmtb: action.couponList.data
-                            }
-                        } 
+            switch (action.program) {
+                case 'coupon':
+                    return {
+                        ...state, currentlyTabSending: false, couponList: {
+                            ...state.couponList,
+                            coupon: filter(state.couponList.all, function (val, key) {
+                                return !isEmpty(val.coupons)
+                            })
+                        }
+                    } 
+                case 'sale':
+                    return {
+                        ...state, currentlyTabSending: false, couponList: {
+                            ...state.couponList,
+                            sale: filter(state.couponList.all, function (val, key) {
+                                return isEmpty(val.coupons)
+                            })
+                        }
+                    }
+                case 'all':{
+                    return {
+                        ...state, currentlyTabSending: false, couponList: {
+                            ...state.couponList,
+                            coupon: filter(state.couponList.all, function (val, key) {
+                                return !isEmpty(val.coupons)
+                            }),
+                            sale: filter(state.couponList.all, function (val, key) {
+                                return isEmpty(val.coupons)
+                            })
+                        }
+                    }
                 }
             }
             return {

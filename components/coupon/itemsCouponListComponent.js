@@ -8,7 +8,7 @@ import { styles } from "../../assets/styles";
 class ItemsCouponListComponent extends Component {
     constructor(props) {
         super(props);
-        console.log('this.props', this.props);
+        // console.log('this.props', this.props);
     }
     _onPressViewNow(){
         console.log('this.props_onPressViewNow', this.props.item);

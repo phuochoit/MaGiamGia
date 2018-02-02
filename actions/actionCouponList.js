@@ -1,4 +1,4 @@
-import { FETCH_COUPON_LIST_SUCCEEDED, FETCH_COUPON_LIST_FAILED, FETCH_COUPON_LIST_MORE_SUCCEEDED, FETCH_COUPON_LIST_MORE_TAB_SUCCEEDED, FETCH_COUPON_LIST, FETCH_COUPON_LIST_MORE, FETCH_COUPON_LIST_MORE_TAB, FETCH_COUPON_TAB_LIST, FETCH_COUPON_TAB_LIST_SUCCEEDED} from "./actionsTypes";
+import { FETCH_COUPON_LIST, FETCH_COUPON_TAB_LIST, FETCH_TAB_COUPON_LIST, FETCH_COUPON_LIST_SUCCEEDED, FETCH_COUPON_TAB_LIST_SUCCEEDED, FETCH_COUPON_LIST_FAILED, FETCH_TAB_COUPON_LIST_SUCCEEDED} from "./actionsTypes";
 
 export function FetchCouponListAction(couponList) {
     return {
@@ -14,22 +14,12 @@ export function FetchCouponTabListAction(couponList) {
     }
 }
 
-export function FetchMoreCouponListAction(couponList) {
+export function FetchTabCouponListAction(couponList) {
     return {
-        type: FETCH_COUPON_LIST_MORE,
+        type: FETCH_TAB_COUPON_LIST,
         couponList: couponList
     }
 }
-
-
-export function FetchMoreTabCouponListAction(couponList) {
-    return {
-        type: FETCH_COUPON_LIST_MORE_TAB,
-        couponList: couponList
-    }
-}
-
-
 
 //action send by redux-saga
 export function FetchSuccessCouponListAction(couponList) {
@@ -46,16 +36,9 @@ export function FetchSuccessCouponTabListAction(couponList) {
     }
 }
 
-export function FetchSuccessMoreCouponListAction(couponList) {
+export function FetchSuccessTabCouponListAction(couponList) {
     return {
-        type: FETCH_COUPON_LIST_MORE_SUCCEEDED,
-        couponList: couponList
-    }
-}
-
-export function FetchSuccessMoreTabCouponListAction(couponList) {
-    return {
-        type: FETCH_COUPON_LIST_MORE_TAB_SUCCEEDED,
+        type: FETCH_TAB_COUPON_LIST_SUCCEEDED,
         couponList: couponList
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList } from 'react-native';
-import { isEmpty } from "lodash";
+
 // styles
 import { styles } from "../../assets/styles";
 //component
@@ -8,11 +8,25 @@ import IsloadingComponent from "../isloading";
 import ItemsCouponListComponent from "./itemsCouponListComponent";
 // container
 import IsConnectedContainer from "../../containers/isConnectedContainer";
+
+// string
+import { ALL } from "../../values/strings";
 class CouponListAllTabComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this._onRefresh = this._onRefresh.bind(this);
+    }
+    componentWillMount() {
         this.props._onFetchCouponList(this.props.navigation.state.params.merchant);
+    }
+    _onRefresh(){
+        let action = {
+            merchant: this.props.navigation.state.params.merchant,
+            program: ALL
+        };
+        this.props._onFetchCouponListTab(action);
+
     }
     componentDidMount() {
 
@@ -41,8 +55,6 @@ class CouponListAllTabComponent extends Component {
                         );
                     }}
                     keyExtractor={item => item.id}
-                    onEndReachedThreshold={0.1}
-                    onEndReached={this._onEndReached}
                     onRefresh={this._onRefresh}
                     refreshing={this.props.couponList.currentlySending}
                 />

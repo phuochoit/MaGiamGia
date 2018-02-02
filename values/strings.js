@@ -15,4 +15,7 @@ export const NCDS = 'nha-cua-doi-song';
 export const SK = 'suc-khoe';
 export const SVQT = 'sach-vpp-qua-tang';
 
+export const ALL = 'all';
+export const SALE = 'sale';
+export const COUPON = 'coupon';
 export { strAccept, strAuthorization};
