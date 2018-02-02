@@ -3,6 +3,7 @@ import { StyleSheet, Dimensions, Platform } from "react-native";
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 const platform = Platform.OS;
+export const categoryBannerHeight = deviceHeight * 0.35;
 export const headerHight = Platform === 'ios' ? 70 : 70 - 24;
 export const heightNoHeaderAndTab = deviceHeight - (Platform === 'ios' ? 70 : 70 - 24) - 75;
 export const backgroundStatusColor = "#2fa4fe";
@@ -16,7 +17,7 @@ export const backgroundButton = "#FB8450";
 export const styles = StyleSheet.create({
     wrapper: {
         backgroundColor: '#fff',
-        flex: 0
+        flex: 1
     },
     flex0: {
         flex: 0
@@ -281,5 +282,15 @@ export const styles = StyleSheet.create({
         fontSize: 16, 
         color: '#2FB8FE', 
         fontWeight: '400' 
+    },
+    //category
+    containerStyle_category: { 
+        marginBottom: 10, 
+        justifyContent: 'center' 
+    },
+    tile_category: { 
+        justifyContent: 'center', 
+        color: '#fff', 
+        fontWeight: '500' 
     }
 }); 

@@ -7,7 +7,6 @@ import { CategoryApi } from "./api/categoryApi";
 function* fetchCategorySaga() {
     try {
         const category = yield CategoryApi.getCategoryFromApi();
-        console.log('category--', category);
         yield put({ type: FETCH_CATEGORY_SUCCEEDED, category: category })
     } catch (error) {
         yield put({ type: FETCH_CATEGORY_FAILED, error });
