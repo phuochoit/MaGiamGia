@@ -176,7 +176,7 @@ export const styles = StyleSheet.create({
     },
     // coupon list items
     wrapper_coupon_list_items: {
-        borderColor: '#2FB8FE',
+        borderColor: background,
         borderWidth: 1, 
         borderStyle: 'solid', 
         marginBottom: 10
@@ -185,18 +185,18 @@ export const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     box_content_left_coupon_list_items: {
-        borderColor: '#FB8450', 
+        borderColor: backgroundButton, 
         borderWidth: 1, 
         borderStyle: 'solid'
     },
     box_content_coupon_save_left_coupon_list_items: { 
         fontSize: 20, 
         fontWeight: 'bold', 
-        color: '#333', 
+        color: TextColor2, 
         textAlign: 'center' 
     },
     box_content_coupon_name_left_coupon_list_items : { 
-        backgroundColor: '#FB8450', 
+        backgroundColor: backgroundButton, 
         alignContent: 'center', 
         justifyContent: 'center', 
         flex: 1 
@@ -211,13 +211,13 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold' 
     },
     content_text_title_coupon_list_items:{ 
-        color: '#333', 
+        color: TextColor2, 
         fontSize: 16, 
         marginBottom: 5 
     },
     content_text_name_left_coupon_list_items:{ 
         fontSize: 14, 
-        color: '#333',
+        color: TextColor2,
         marginBottom:3
     },
     content_text_name_right_coupon_list_items:{ 
@@ -228,22 +228,58 @@ export const styles = StyleSheet.create({
         flex: 1, 
         justifyContent: 'center', 
         alignContent: 'center', 
-        backgroundColor: '#2FB8FE'
+        backgroundColor: background
     },
     bottom_text_coupon_list_items:{ 
         paddingVertical: 5, 
         justifyContent: 'center', 
-        color: '#fff', 
+        color: backgroundWhite, 
         textAlign: 'center' 
     },
     // empty component
     title_empty: { 
         fontSize: 20, 
         marginVertical: 5, 
-        color: '#333' 
+        color: TextColor2
     },
     message_empty: { 
         fontSize: 16, 
-        color: '#333' 
+        color: TextColor2
+    },
+    // detail coupon
+    wrapper_detail_coupon: { 
+        flex: 1,
+        marginTop: 10, 
+        marginHorizontal: 10 
+    },
+    image_detail_coupon:{
+        width: deviceWidth - 20,
+        height: (deviceWidth -20) / 2,
+        resizeMode: 'contain'    
+    },
+    footer_detail_coupon: { 
+        flex: 0, 
+        justifyContent: 'flex-end', 
+        marginVertical: 10 
+    },
+    button_footer_detail_coupon:{ 
+        height: 30 
+    },
+    content_detail_coupon:{ 
+        flex: 5, 
+        justifyContent: 'center' 
+    },
+    touchableOpacity_content_detail_coupon: { 
+        marginVertical: 5 
+    },
+    header_detail_coupon: { 
+        flex: 0, 
+        justifyContent: 'center', 
+        marginHorizontal: 5 
+    },
+    title_header_detail_coupon: { 
+        fontSize: 16, 
+        color: '#2FB8FE', 
+        fontWeight: '400' 
     }
 }); 

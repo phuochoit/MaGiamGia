@@ -18,7 +18,7 @@ class HeaderComponent extends Component {
     render() {
         return (
             <Header
-                leftComponent={this.props.iconLeft ? <Icon name="ios-arrow-back" color={TitleColor} type='ionicon' onPress={this._onGoBack.bind(this)} />: <View />}
+                leftComponent={this.props.iconLeft ? <Icon name="ios-arrow-back" color={TitleColor} type='ionicon' onPress={this._onGoBack.bind(this)}/>: <View />}
                 centerComponent={{ text: this.props.title, style: { color: TitleColor , fontSize:18} }}
                 rightComponent={<View />}
                 statusBarProps={{ barStyle: 'light-content', backgroundColor: backgroundStatusColor }}

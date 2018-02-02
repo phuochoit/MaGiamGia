@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { StackNavigator } from "react-navigation";
-
-import { COUPON, LISTCOUPON } from "../values/screenName";
-
+// screenName
+import { COUPON, LISTCOUPON, COUPONDETAIL} from "../values/screenName";
+//containers
 import CouponContainer from "../containers/couponContainer";
 import CouponListContainer from "../containers/couponListContainer";
+//components
+import couponListDetailComponent from "../components/coupon/couponListDetailComponent";
 
 const CouponsStackNavigator = StackNavigator(
     {
         COUPON: { screen: CouponContainer },
         LISTCOUPON: { screen: CouponListContainer },
+        COUPONDETAIL: { screen: couponListDetailComponent },
     },
     {
         headerMode: "none"

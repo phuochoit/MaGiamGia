@@ -5,13 +5,14 @@ import { isEmpty } from "lodash";
 //style
 import { styles } from "../../assets/styles";
 
+import { COUPONDETAIL } from "../../values/screenName";
 class ItemsCouponListComponent extends Component {
     constructor(props) {
         super(props);
         // console.log('this.props', this.props);
     }
     _onPressViewNow(){
-        console.log('this.props_onPressViewNow', this.props.item);
+        this.props.navigation.navigate(COUPONDETAIL, this.props.item)
     }
     render() {
         const { item, index } = this.props;

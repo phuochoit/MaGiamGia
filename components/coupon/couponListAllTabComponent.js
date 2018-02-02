@@ -33,6 +33,7 @@ class CouponListAllTabComponent extends Component {
 
     }
     render() {
+        console.log('this.props', this.props);
         if (!this.props.isConnected) {
             return (
                 <IsConnectedContainer iconLeft={false} title="" showHeader={true} />
@@ -44,7 +45,7 @@ class CouponListAllTabComponent extends Component {
         }
 
         if (isEmpty(this.props.couponList.couponList.all)){
-            return <EmptyComponent message='Không Có Chương Trình Khuyến Mãi Nào' />
+            return (<EmptyComponent message='Không Có Chương Trình Khuyến Mãi Nào' />);
         }
         return (
             <View style={[styles.wrapper]}>
@@ -55,7 +56,7 @@ class CouponListAllTabComponent extends Component {
                     data={this.props.couponList.couponList.all}
                     renderItem={({ item, index }) => {
                         return (
-                            <ItemsCouponListComponent item={item} index={index} />
+                            <ItemsCouponListComponent item={item} index={index} navigation={this.props.navigation}/>
                         );
                     }}
                     keyExtractor={item => item.id}

@@ -44,7 +44,7 @@ class CouponListCouponTabComponent extends Component {
                     data={this.props.couponList.couponList.coupon}
                     renderItem={({ item, index }) => {
                         return (
-                            <ItemsCouponListComponent item={item} index={index} />
+                            <ItemsCouponListComponent item={item} index={index} navigation={this.props.navigation}/>
                         );
                     }}
                     keyExtractor={item => item.id}
