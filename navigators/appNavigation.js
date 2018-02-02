@@ -53,6 +53,7 @@ export default (AppNavigator = TabNavigator(
         tabBarPosition: "bottom",
         animationEnabled: true,
         lazyLoad: true,
+        order: ['COUPON', 'HOME', 'CATEGORY','HOTPRODUCT'],
         tabBarOptions:{
             showIcon: true,
             showLabel: false,

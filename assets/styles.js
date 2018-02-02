@@ -54,11 +54,17 @@ export const styles = StyleSheet.create({
     pdright: {
         paddingRight: 10
     },
+    pdall:{
+        padding: 10
+    },
     mgtop: {
         marginTop: 10
     },
     mghorizontal: {
         marginHorizontal: 10
+    },
+    mgright:{
+        marginRight: 10
     },
     margin_wrapper: {
         marginHorizontal: 10
@@ -157,5 +163,74 @@ export const styles = StyleSheet.create({
     coupon_list_renderTabBar : {
         backgroundColor: backgroundWhite, 
         borderBottomColor: background
+    },
+    // toast 
+    wrapper_toast: { 
+        borderRadius: 6, 
+        backgroundColor:'rgba(0, 0, 0, 0.7)', 
+        paddingHorizontal: 15, 
+        paddingVertical:5 
+    },
+    // coupon list items
+    wrapper_coupon_list_items: {
+        borderColor: '#2FB8FE',
+        borderWidth: 1, 
+        borderStyle: 'solid', 
+        marginBottom: 10
+    },
+    box_content_coupon_list_items:{
+        flexDirection: 'row'
+    },
+    box_content_left_coupon_list_items: {
+        borderColor: '#FB8450', 
+        borderWidth: 1, 
+        borderStyle: 'solid'
+    },
+    box_content_coupon_save_left_coupon_list_items: { 
+        fontSize: 20, 
+        fontWeight: 'bold', 
+        color: '#333', 
+        textAlign: 'center' 
+    },
+    box_content_coupon_name_left_coupon_list_items : { 
+        backgroundColor: '#FB8450', 
+        alignContent: 'center', 
+        justifyContent: 'center', 
+        flex: 1 
+    },
+    content_coupon_name_left_coupon_list_items: { 
+        paddingVertical: 5, 
+        justifyContent: 'center', 
+        color: '#fff', 
+        textAlign: 'center', 
+        paddingHorizontal: 5, 
+        fontSize: 12, 
+        fontWeight: 'bold' 
+    },
+    content_text_title_coupon_list_items:{ 
+        color: '#333', 
+        fontSize: 16, 
+        marginBottom: 5 
+    },
+    content_text_name_left_coupon_list_items:{ 
+        fontSize: 14, 
+        color: '#333',
+        marginBottom:3
+    },
+    content_text_name_right_coupon_list_items:{ 
+        fontWeight: '500', 
+        marginRight: 10 
+    },
+    bottom_coupon_list_items: { 
+        flex: 1, 
+        justifyContent: 'center', 
+        alignContent: 'center', 
+        backgroundColor: '#2FB8FE'
+    },
+    bottom_text_coupon_list_items:{ 
+        paddingVertical: 5, 
+        justifyContent: 'center', 
+        color: '#fff', 
+        textAlign: 'center' 
     }
-});
+}); 

@@ -16,6 +16,7 @@ function* getProductFromApi() {
 }
 
 function* getMoreProductFromApi(page) {
+    
     const respone = yield fetch(urlMoreProduct + page, {
         method: 'GET',
         headers: {

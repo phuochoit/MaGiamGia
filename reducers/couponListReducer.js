@@ -17,7 +17,7 @@ const couponListReducer = (state = initialState, action) => {
         case FETCH_COUPON_LIST:
             return { ...state, currentlySending: true }
         case FETCH_COUPON_TAB_LIST:
-            return { ...state, currentlySending: true }
+            return { ...state, currentlyTabSending: true }
         case FETCH_COUPON_TAB_LIST_SUCCEEDED:
             if (!isEmpty(action.couponList.data)){
                 switch (action.tabname) {

@@ -15,8 +15,8 @@ class OffersInformationsComponent extends Component {
         this.state = {};
 
     }
-    async componentWillMount() {
-        await this.props.onFetchOffersInfor();
+    componentWillMount() {
+        this.props.onFetchOffersInfor();
     }
     componentDidMount() {
     };

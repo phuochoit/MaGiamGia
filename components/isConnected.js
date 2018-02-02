@@ -10,9 +10,13 @@ class IsConnectedComponent extends Component {
         this.props.onfetchNetConnected();
     }
     render() {
+        let cHeader = null;
+        if (this.props.showHeader){
+            cHeader = <HeaderComponent iconLeft={this.props.iconLeft} title={this.props.title} />
+        }
         return (
             <View style={[styles.flex1, styles.wrapper_is_connected]}>
-                <HeaderComponent iconLeft={this.props.iconLeft} title={this.props.title} />
+                {cHeader}
                 <View style={[styles.flex1, styles.jcc_aic]}>
                     <Icon
                         name='wifi-off'

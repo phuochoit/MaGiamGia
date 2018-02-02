@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList} from 'react-native';
-
+import Toast, { DURATION } from 'react-native-easy-toast';
 // component
 import HeaderComponent from "../headerComponent";
 import ItemsProduct from "../home/ItemsProduct";
@@ -12,7 +12,7 @@ class ProductComponent extends Component {
     constructor(props){
         super(props);
         this.state = {
-            page: 1,
+            page: 1
         };
         this._onRefresh = this._onRefresh.bind(this);
         this._onEndReached = this._onEndReached.bind(this);
@@ -22,7 +22,7 @@ class ProductComponent extends Component {
     }
     _onEndReached(){
         this.props.onFetchMoreProduct(this.state.page + 1);
-        this.setState({ page: this.state.page + 1 });
+        this.setState({ page: this.state.page + 1});
     }
     _onRefresh(){
         this.props.onFetchProduct();
@@ -30,9 +30,18 @@ class ProductComponent extends Component {
     }
     render() {
         if (this.props.product.currentlySending) {
-            return <IsloadingComponent />
+            return (
+                <View style={[styles.wrapper]}>
+                    <HeaderComponent iconLeft={false} title="Sản Phẩm Bán Chạy" navigation={this.props.navigation} />
+                    <IsloadingComponent />
+                </View>
+            );
         }
-
+        if (this.props.product.toast === 1){
+            this.refs.toast.show('Đang Tải Dữ Liệu!', DURATION.FOREVER);
+        } else if (this.props.product.toast === 2){
+            this.refs.toast.close();
+        }
         return (
             <View style={[styles.wrapper]}>
                 <HeaderComponent iconLeft={false} title="Sản Phẩm Bán Chạy" navigation={this.props.navigation} />
@@ -52,6 +61,7 @@ class ProductComponent extends Component {
                     onRefresh={this._onRefresh}
                     refreshing={this.props.product.currentlySending}
                 />
+                <Toast ref="toast" position='bottom' opacity={1} style={styles.wrapper_toast} />
             </View>
         );
     }

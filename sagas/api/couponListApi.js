@@ -3,7 +3,8 @@ const urlCouponList = 'https://api.accesstrade.vn/v1/offers_informations?status=
 
 
 function* getCouponListFromApi(merchant) {
-    let url = urlCouponList + merchant;
+    // let url = urlCouponList + merchant;
+    let url = 'https://api.accesstrade.vn/v1/offers_informations?status=1';
     const respone = yield fetch(url, {
         method: 'GET',
         headers: {

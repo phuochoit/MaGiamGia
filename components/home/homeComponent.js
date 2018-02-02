@@ -16,7 +16,7 @@ class HomeComponent extends Component {
     render() {
         if (!this.props.isConnected){
             return (
-                <IsConnectedContainer iconLeft={false} title="Mã Giảm Giá" />
+                <IsConnectedContainer iconLeft={false} title="Mã Giảm Giá" showHeader={true} />
             );
         }
         return (
