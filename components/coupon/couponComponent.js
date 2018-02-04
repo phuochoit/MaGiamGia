@@ -37,13 +37,18 @@ class ItemsCouponShop extends Component {
 }
 
 class CouponComponent extends Component {
+    constructor(props){
+        super(props);
+        this.state = {};
+        this.props.onfetchNetConnected();
+    }
     componentWillMount() {
         this.props._onFetchCouponShop();
     }
     render() {
         if (!this.props.isConnected) {
             return (
-                <IsConnectedContainer iconLeft={false} title="Chương Trình Giảm Giá" />
+                <IsConnectedContainer iconLeft={false} title="Chương Trình Khuyến Mãi" showHeader={true}/>
             );
         }
         if (this.props.couponShop.currentlySending) {

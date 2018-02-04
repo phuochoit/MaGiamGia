@@ -6,6 +6,8 @@ import { Button } from "react-native-elements";
 import HeaderComponent from "../headerComponent";
 //styles
 import { styles, backgroundButton } from "../../assets/styles";
+//Container
+import IsConnectedContainer from "../../containers/isConnectedContainer";
 
 class TopProductDetailComponent extends Component {
     constructor(props) {
@@ -13,6 +15,7 @@ class TopProductDetailComponent extends Component {
         this.state = ({
             imageLoading: true
         });
+        this.props.onfetchNetConnected();
     }
     _imageLoadingError() {
         this.setState({ imageLoading: false });
@@ -37,6 +40,11 @@ class TopProductDetailComponent extends Component {
         const { navigate, state} = this.props.navigation;
         let titleComponet = 'Chi Tiết Sản Phẩm';
         let strprice, strdiscount, price, discount, strCategoryName = null;
+        if (!this.props.isConnected) {
+            return (
+                <IsConnectedContainer iconLeft={true} title={titleComponet} showHeader={true} navigation={this.props.navigation} />
+            );
+        }
         if (state.params.discount > 0) {
             discount = state.params.discount.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
             strdiscount = (<Text style={styles.product_txt_pice}>Giá Khuyến Mãi: <Text style={styles.product_txt_pice_bold}>{discount}</Text></Text>);

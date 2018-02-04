@@ -6,6 +6,8 @@ import { isEmpty } from "lodash";
 import HeaderComponent from "../headerComponent";
 //styles
 import { styles, backgroundButton } from "../../assets/styles";
+//Container
+import IsConnectedContainer from "../../containers/isConnectedContainer";
 
 class CouponListDetailComponent extends Component {
     constructor(props) {
@@ -13,6 +15,7 @@ class CouponListDetailComponent extends Component {
         this.state = ({
             imageLoading: true
         });
+        this.props.onfetchNetConnected();
     }
     _imageLoadingError() {
         this.setState({ imageLoading: false });
@@ -46,6 +49,12 @@ class CouponListDetailComponent extends Component {
         const { navigation } = this.props;
         let titleComponet = "Chi Tiết Khuyến Mãi";
         let textButtonCopy = "Đi Đến Khuyến Mãi";
+        if (!this.props.isConnected) {
+            return (
+                <IsConnectedContainer iconLeft={true} title={titleComponet} showHeader={true} navigation={this.props.navigation} />
+            );
+        }
+
         if (!isEmpty(navigation.state.params.coupons)) {
             textButtonCopy = "Copy Mã Giảm Giá";
         }

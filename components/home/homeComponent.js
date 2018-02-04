@@ -4,6 +4,7 @@ import { Text, View , ScrollView} from 'react-native';
 import HeaderComponent from "../headerComponent";
 import TopProductComponent from "./topProductComponent";
 import OffersInformationsComponent from "./offersInformationsComponent";
+//Container
 import IsConnectedContainer  from "../../containers/isConnectedContainer";
 //style
 import { styles } from "../../assets/styles";

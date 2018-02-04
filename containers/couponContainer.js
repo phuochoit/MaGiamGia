@@ -6,6 +6,7 @@ import CouponComponent from "../components/coupon/couponComponent";
 
 // action
 import { FetchCouponShopAction } from "../actions/actionCouponShop";
+import { fetchNetConnected } from "../actions/actionConnected";
 
 const mapStateToProps = (state) => {
     return {
@@ -18,7 +19,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         _onFetchCouponShop: () => {
             dispatch(FetchCouponShopAction())
-        }
+        },
+        onfetchNetConnected: () => {
+            dispatch(fetchNetConnected())
+        },
     }
 };
 const CouponContainer = connect(mapStateToProps, mapDispatchToProps)(CouponComponent);

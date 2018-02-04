@@ -4,12 +4,12 @@ import { StackNavigator } from "react-navigation";
 import { HOTPRODUCT, HOTPRODUCTDETAIL } from "../values/screenName";
 //containers
 import ProductContainer from "../containers/productContainer";
-//components
-import ProductDetailComponent from "../components/product/productDetailComponent";
+import ProductDetailContainer from "../containers/productDetailContainer";
+
 const ProductStackNavigator = StackNavigator(
     {
         HOTPRODUCT: { screen: ProductContainer },
-        HOTPRODUCTDETAIL: { screen: ProductDetailComponent },
+        HOTPRODUCTDETAIL: { screen: ProductDetailContainer },
     },
     {
         headerMode: "none"

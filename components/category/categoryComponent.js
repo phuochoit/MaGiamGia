@@ -20,7 +20,7 @@ class CategoryComponent extends Component {
         this.state = ({
             imageLoading: true
         });
-        // this._onPressGoDetail = this._onPressGoDetail.bind(this);
+        this.props.onfetchNetConnected();
     }
     componentWillMount() {
         this.props._onFetchCategory();
@@ -34,7 +34,7 @@ class CategoryComponent extends Component {
     render() {
         if (!this.props.isConnected) {
             return (
-                <IsConnectedContainer iconLeft={false} title="Chương Trình Giảm Giá" />
+                <IsConnectedContainer iconLeft={false} title="Danh Mục Khuyến Mãi" showHeader={true}/>
             );
         }
         if (this.props.category.currentlySending) {

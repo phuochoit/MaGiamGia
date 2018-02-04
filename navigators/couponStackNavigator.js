@@ -5,14 +5,15 @@ import { COUPON, LISTCOUPON, COUPONDETAIL} from "../values/screenName";
 //containers
 import CouponContainer from "../containers/couponContainer";
 import CouponListContainer from "../containers/couponListContainer";
+import CouponListDetailContainer from "../containers/couponListDetailContainer";
 //components
-import couponListDetailComponent from "../components/coupon/couponListDetailComponent";
+// import couponListDetailComponent from "../components/coupon/couponListDetailComponent";
 
 const CouponsStackNavigator = StackNavigator(
     {
         COUPON: { screen: CouponContainer },
         LISTCOUPON: { screen: CouponListContainer },
-        COUPONDETAIL: { screen: couponListDetailComponent },
+        COUPONDETAIL: { screen: CouponListDetailContainer },
     },
     {
         headerMode: "none"

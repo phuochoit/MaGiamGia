@@ -6,6 +6,7 @@ import CategoryListDetailComponent from "../components/category/categoryListDeta
 
 // action
 import { FetchListCategoryAction, FetchTabListCategoryAction, FetchRefreShingTabCouponListAction} from "../actions/actionListDetailCategory";
+import { fetchNetConnected } from "../actions/actionConnected";
 
 const mapStateToProps = (state) => {
     return {
@@ -25,6 +26,9 @@ const mapDispatchToProps = (dispatch) => {
         _onFetchRefreShingTabListCategory: (action) => {
             dispatch(FetchRefreShingTabCouponListAction(action))
         },
+        onfetchNetConnected: () => {
+            dispatch(fetchNetConnected())
+        }
     }
 };
 const CategoryListDetailContainer = connect(mapStateToProps, mapDispatchToProps)(CategoryListDetailComponent);

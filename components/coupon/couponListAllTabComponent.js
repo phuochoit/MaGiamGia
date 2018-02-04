@@ -33,12 +33,6 @@ class CouponListAllTabComponent extends Component {
 
     }
     render() {
-        if (!this.props.isConnected) {
-            return (
-                <IsConnectedContainer iconLeft={false} title="" showHeader={true} />
-            );
-        }
-
         if (this.props.couponList.currentlySending) {
             return <IsloadingComponent />
         }

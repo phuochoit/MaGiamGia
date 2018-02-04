@@ -6,10 +6,12 @@ import ProductComponent from "../components/product/productComponent";
 
 // action
 import { FetchProductAction, FetchMoreProductAction } from "../actions/actionProduct";
+import { fetchNetConnected } from "../actions/actionConnected";
 
 const mapStateToProps = (state) => {
     return {
-        product: state.product
+        product: state.product,
+        isConnected: state.isConnected.isConnected,
     }
 };
 
@@ -20,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onFetchMoreProduct: (offset) => {
             dispatch(FetchMoreProductAction(offset))
+        },
+        onfetchNetConnected: () => {
+            dispatch(fetchNetConnected())
         },
     }
 };

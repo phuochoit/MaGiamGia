@@ -8,6 +8,8 @@ import IsloadingComponent from "../isloading";
 import EmptyComponent from "../emptyComponent";
 //styles
 import { styles } from "../../assets/styles";
+//Container
+import IsConnectedContainer from "../../containers/isConnectedContainer";
 
 class ProductComponent extends Component {
     constructor(props){
@@ -17,6 +19,7 @@ class ProductComponent extends Component {
         };
         this._onRefresh = this._onRefresh.bind(this);
         this._onEndReached = this._onEndReached.bind(this);
+        this.props.onfetchNetConnected();
     }
     componentWillMount() {
         this.props.onFetchProduct();
@@ -31,6 +34,12 @@ class ProductComponent extends Component {
     }
     render() {
         let viewMore = null;
+        if (!this.props.isConnected) {
+            return (
+                <IsConnectedContainer iconLeft={false} title="Sản Phẩm Bán Chạy" showHeader={true} />
+            );
+        }
+
         if (this.props.product.currentlySending) {
             return (
                 <View style={[styles.wrapper]}>

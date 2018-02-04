@@ -5,14 +5,14 @@ import { CATEGORY, CATEGORYLISTDETAIL, CATEGORYDETAIL  } from "../values/screenN
 //containers
 import CategoryContainer from "../containers/categoryContainer";
 import CategoryListDetailContainer from "../containers/categoryListDetailContainer";
-//components
-import couponListDetailComponent from "../components/coupon/couponListDetailComponent";
+import CouponListDetailContainer from "../containers/couponListDetailContainer";
+
 
 const CategoryStackNavigator = StackNavigator(
     {
         CATEGORY: { screen: CategoryContainer },
         CATEGORYLISTDETAIL: { screen: CategoryListDetailContainer },
-        CATEGORYDETAIL: { screen: couponListDetailComponent },
+        CATEGORYDETAIL: { screen: CouponListDetailContainer },
     },
     {
         headerMode: "none"

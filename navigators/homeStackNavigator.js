@@ -4,15 +4,15 @@ import { StackNavigator } from "react-navigation";
 import { HOME, HOMEDETAIL, HOMECOUPONDETAIL} from "../values/screenName";
 //containers
 import HomeContainer from "../containers/homeContainer";
-//components
-import TopProductDetailComponent from "../components/home/topProductDetailComponent";
-import CouponListDetailComponent from "../components/coupon/couponListDetailComponent";
+import TopProductDetailContainer  from "../containers/topProductDetailContainer";
+import CouponListDetailContainer from "../containers/couponListDetailContainer";
+
 
 const HomeStackNavigator = StackNavigator(
     {
         HOME: { screen: HomeContainer },
-        HOMEDETAIL: { screen: TopProductDetailComponent },
-        HOMECOUPONDETAIL: { screen: CouponListDetailComponent },
+        HOMEDETAIL: { screen: TopProductDetailContainer },
+        HOMECOUPONDETAIL: { screen: CouponListDetailContainer },
     },
     {
         headerMode: "none"

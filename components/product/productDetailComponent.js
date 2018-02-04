@@ -7,12 +7,16 @@ import HeaderComponent from "../headerComponent";
 //styles
 import { styles, backgroundButton } from "../../assets/styles";
 
+//Container
+import IsConnectedContainer from "../../containers/isConnectedContainer";
+
 class ProductDetailComponent extends Component {
     constructor(props) {
         super(props);
         this.state = ({
             imageLoading: true
         });
+        this.props.onfetchNetConnected();
     }
     _imageLoadingError() {
         this.setState({ imageLoading: false });
@@ -36,6 +40,11 @@ class ProductDetailComponent extends Component {
     render() {
         const { navigate, state} = this.props.navigation;
         let titleComponet = 'Chi Tiết Sản Phẩm';
+        if (!this.props.isConnected) {
+            return (
+                <IsConnectedContainer iconLeft={true} title={titleComponet} showHeader={true} navigation={this.props.navigation} />
+            );
+        }
         return (
             <View style={[styles.wrapper]}>
                 <HeaderComponent iconLeft={true} title={titleComponet} navigation={this.props.navigation} />

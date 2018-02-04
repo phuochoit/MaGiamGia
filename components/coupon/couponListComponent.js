@@ -18,11 +18,21 @@ import IsConnectedContainer from "../../containers/isConnectedContainer";
 import { styles, background, backgroundWhite } from "../../assets/styles";
 
 class CouponListComponent extends Component {
+    constructor(props){
+        super(props);
+        this.state = {};
+        this.props.onfetchNetConnected();
+    }
     componentWillMount() {
     }
     render() {
         const { navigate, state } = this.props.navigation;
         const componentTitle =`Chương Trình Khuyến Mãi ${state.params.title}`;
+        if (!this.props.isConnected) {
+            return (
+                <IsConnectedContainer iconLeft={false} title={componentTitle} showHeader={true} />
+            );
+        }
         return (
             <View style={[styles.wrapper, styles.flex1]}>
                 <HeaderComponent iconLeft={true} title={componentTitle} navigation={this.props.navigation}/>

@@ -12,7 +12,7 @@ class IsConnectedComponent extends Component {
     render() {
         let cHeader = null;
         if (this.props.showHeader){
-            cHeader = <HeaderComponent iconLeft={this.props.iconLeft} title={this.props.title} />
+            cHeader = <HeaderComponent iconLeft={this.props.iconLeft} title={this.props.title} navigation={this.props.navigation}  />
         }
         return (
             <View style={[styles.flex1, styles.wrapper_is_connected]}>
