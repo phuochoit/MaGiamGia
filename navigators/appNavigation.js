@@ -5,23 +5,18 @@ import { Icon } from 'react-native-elements';
 // screen name
 import { HOME, COUPON, CATEGORY, HOTPRODUCT, LISTCOUPON } from "../values/screenName";
 
-//component
-import categoryComponent from "../components/category/categoryComponent";
-
-// container
-import HomeContainer from "../containers/homeContainer";
-import ProductContainer  from "../containers/productContainer";
-
 // StackNavigator
+import HomeStackNavigator from "./homeStackNavigator";
 import CouponsStackNavigator from "./couponStackNavigator";
 import CategoryStackNavigator from "./categoryStackNavigator";
+import ProductStackNavigator from "./productStackNavigator";
 // styles
 import { background, TitleColor, TextColor } from "../assets/styles";
 
 export default (AppNavigator = TabNavigator(
     {
         HOME: {
-            screen: HomeContainer,
+            screen: HomeStackNavigator,
             navigationOptions :{
                 tabBarLabel: "HOME",
                 tabBarIcon: ({ tintColor, focused }) => (<Icon name='home' type='MaterialCommunityIcons' color={tintColor}/>)
@@ -41,7 +36,7 @@ export default (AppNavigator = TabNavigator(
                 tabBarIcon: ({ tintColor }) => (<Icon name='rate-review' type='MaterialIcons' color={tintColor} />)
             } },
         HOTPRODUCT: {
-            screen: ProductContainer,
+            screen: ProductStackNavigator,
             navigationOptions: {
                 tabBarLabel: "HOTPRODUCT",
                 tabBarIcon: ({ tintColor }) => (<Icon name='whatshot' type='MaterialIcons' color={tintColor}/>)
@@ -53,7 +48,7 @@ export default (AppNavigator = TabNavigator(
         tabBarPosition: "bottom",
         animationEnabled: true,
         lazyLoad: true,
-        order: ['CATEGORY','COUPON', 'HOME', 'HOTPRODUCT'],
+        // order: ['CATEGORY','COUPON', 'HOME', 'HOTPRODUCT'],
         tabBarOptions:{
             showIcon: true,
             showLabel: false,

@@ -4,9 +4,12 @@ import { Button } from "react-native-elements";
 import { isNull, isEmpty } from "lodash";
 
 // Styles
-import { styles, backgroundButton } from "../../assets/styles";
+import { styles } from "../../assets/styles";
 
-class ItemsProduct extends Component {
+// screenName
+import { HOTPRODUCTDETAIL } from "../../values/screenName";
+
+class ProductItems extends Component {
     constructor(props) {
         super(props);
         this.state = ({
@@ -19,7 +22,10 @@ class ItemsProduct extends Component {
     _onPressBuy(){
         Linking.openURL(this.props.item.aff_link).catch(err => console.error('An error occurred', err));
     }
-
+    _onPressViewDetail(item){
+        console.log('_onPressViewDetail', item);
+        this.props.navigation.navigate(HOTPRODUCTDETAIL, item);
+    }
     render() {
         const { item } = this.props;
         let strprice,strdiscount, price, discount = null;
@@ -53,16 +59,18 @@ class ItemsProduct extends Component {
                         {strdiscount}
                     </View>
                     <View style={[styles.flex1,styles.box_product_bottom]}>
-                        <View style={styles.flex2}/>
-                        <View style={[styles.flex2, styles.box_product_bottom_button]}>
-                            <Button
-                                buttonStyle={{ height: 30}}
-                                borderRadius={6}
-                                fontSize={13}
-                                large={false}
-                                backgroundColor={backgroundButton}
-                                onPress={this._onPressBuy.bind(this)}
-                                title='Mua Ngay' />
+                        <View style={[styles.flex1, styles.button_box_product_bottom]}>
+                            <TouchableOpacity 
+                                style={[styles.button_home_product, styles.button_home_product_detail]}
+                                onPress={this._onPressViewDetail.bind(this, item)}
+                            >
+                                <Text style={styles.button_product_text}>Xem Chi Tiết</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity 
+                                style={[styles.button_home_product, styles.button_home_product_buy_now]}
+                                onPress={this._onPressBuy.bind(this)}>
+                                <Text style={styles.button_product_text }>Mua Ngay</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                     
@@ -73,4 +81,4 @@ class ItemsProduct extends Component {
 }
 
 
-export default ItemsProduct;
+export default ProductItems;

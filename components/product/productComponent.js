@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList} from 'react-native';
-import Toast, { DURATION } from 'react-native-easy-toast';
 // component
 import HeaderComponent from "../headerComponent";
-import ItemsProduct from "../home/ItemsProduct";
+import ProductItems from "./productItems";
 import IsloadingComponent from "../isloading";
 //styles
 import { styles } from "../../assets/styles";
@@ -29,6 +28,7 @@ class ProductComponent extends Component {
         this.setState({ page: 1 });
     }
     render() {
+        let viewMore = null;
         if (this.props.product.currentlySending) {
             return (
                 <View style={[styles.wrapper]}>
@@ -38,9 +38,9 @@ class ProductComponent extends Component {
             );
         }
         if (this.props.product.toast === 1){
-            this.refs.toast.show('Đang Tải Dữ Liệu!', DURATION.FOREVER);
+            viewMore = <Text>Đang Tải Dữ Liệu!</Text>;
         } else if (this.props.product.toast === 2){
-            this.refs.toast.close();
+            viewMore = null;
         }
         return (
             <View style={[styles.wrapper]}>
@@ -52,7 +52,7 @@ class ProductComponent extends Component {
                     data={this.props.product.product}
                     renderItem={({ item, index }) => {
                         return (
-                            <ItemsProduct item={item} index={index} />
+                            <ProductItems item={item} index={index} navigation={this.props.navigation}/>
                         );
                     }}
                     keyExtractor={item => item.product_id}
@@ -61,7 +61,7 @@ class ProductComponent extends Component {
                     onRefresh={this._onRefresh}
                     refreshing={this.props.product.currentlySending}
                 />
-                <Toast ref="toast" position='bottom' opacity={1} style={styles.wrapper_toast} />
+                {viewMore}
             </View>
         );
     }

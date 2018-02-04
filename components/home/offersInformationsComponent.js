@@ -8,6 +8,8 @@ import { styles} from "../../assets/styles";
 
 // component
 import IsloadingComponent from "../isloading";
+//screenName
+import { HOMECOUPONDETAIL } from "../../values/screenName";
 
 class OffersInformationsComponent extends Component {
     constructor(props){
@@ -20,9 +22,15 @@ class OffersInformationsComponent extends Component {
     }
     componentDidMount() {
     };
+    _onPressClickSlide(item){
+        this.props.navigation.navigate(HOMECOUPONDETAIL, item)
+    }
     render() {
         if (this.props.offersInfor.currentlySending) {
-            return <IsloadingComponent />
+            return (
+                <View style={[styles.wrapper_silde]}>
+                    <IsloadingComponent />
+                </View>);
         }
         if (!isUndefined(this.props.offersInfor.offers.data)) {
             swiper = (
@@ -37,13 +45,11 @@ class OffersInformationsComponent extends Component {
                         
                         map(this.props.offersInfor.offers.data, (val, key) => (
                             <View key={val.id}>
-                                <TouchableOpacity key={val.id} onPress={() => {
-                                    Linking.openURL(val.aff_link).catch(err => console.error('An error occurred', err));
-                                }}>
+                                <TouchableOpacity key={val.id} onPress={this._onPressClickSlide.bind(this, val ) }>
                                     <Image
                                         source={{ uri: val.image }}
                                         style={[styles.image_silde]}
-                                        resizeMode="cover"
+                                        resizeMode="contain"
                                     />
                                 </TouchableOpacity>
                             </View>

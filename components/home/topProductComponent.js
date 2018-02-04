@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, FlatList} from 'react-native';
 
 //component
-import ItemsProduct from "./ItemsProduct";
+import TopProductItems from "./topProductItems";
 import IsloadingComponent from "../isloading";
 // Styles
 import {styles} from "../../assets/styles";
@@ -15,7 +15,11 @@ class TopProductComponent extends Component {
     };
     render() {
         if (this.props.topProduct.currentlySending){
-            return <IsloadingComponent />
+            return (
+                <View style={[styles.topProductCurrentlySending]}>
+                    <IsloadingComponent />
+                </View>    
+                );
         }
         
         return (
@@ -28,7 +32,7 @@ class TopProductComponent extends Component {
                     data={this.props.topProduct.product.data }
                     renderItem={({ item, index }) => {
                         return (
-                            <ItemsProduct item={item} index={index}/>
+                            <TopProductItems item={item} index={index} navigation={this.props.navigation}/>
                         );
                     }}
                     keyExtractor={item => item.product_id}

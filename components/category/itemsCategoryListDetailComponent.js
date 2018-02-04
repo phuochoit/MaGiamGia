@@ -12,7 +12,7 @@ class ItemsCategoryListDetailComponent extends Component {
         // console.log('this.props', this.props);
     }
     _onPressViewNow(){
-        this.props.navigation.navigate(CATEGORYDETAIL, this.props.item)
+        this.props.navigation.navigate(CATEGORYDETAIL, this.props.item);
     }
     render() {
         const { item, index } = this.props;

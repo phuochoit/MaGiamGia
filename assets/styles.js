@@ -83,13 +83,36 @@ export const styles = StyleSheet.create({
         paddingVertical: 5
     },
     //home
+    topProductCurrentlySending:{
+        height: (deviceWidth * 0.6) + 20,
+    },
     wrapper_silde: {
-        height: (deviceWidth / 2) + 20,
-        flex: 0
+        height: (deviceWidth * 0.4) + 20,
+        flex: 1,
     },
     image_silde: {
         width: deviceWidth,
-        height: deviceWidth / 2
+        height: deviceWidth * 0.4
+    },
+    button_home_product: {
+        borderRadius: 4, 
+        paddingHorizontal: 10, 
+        justifyContent: 'center',
+        height: 30, 
+        marginVertical: 5 
+    },
+    button_product_text:{
+        color: "#fff"
+    },
+    button_home_product_detail: {
+        backgroundColor: background
+    },
+    button_home_product_buy_now: {
+        backgroundColor: backgroundButton
+    },
+    button_box_product_bottom:{
+        flexDirection: 'row', 
+        justifyContent: 'space-between'
     },
     // item product
     wrapper_product_item: {
@@ -127,8 +150,6 @@ export const styles = StyleSheet.create({
         marginTop: 5
     },
     box_product_bottom_button: {
-        alignItems: 'flex-end',
-        alignSelf: 'flex-end',
         justifyContent: 'flex-end'
     },
     //isConnected

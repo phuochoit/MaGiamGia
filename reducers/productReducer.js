@@ -12,7 +12,7 @@ const initialState = {
 const productReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_PRODUCT:
-            return { ...state, currentlySending: true }
+            return { ...state, currentlySending: true, toast:0}
         case FETCH_MOREPRODUCT:
             return { ...state, toast: 1 }
         case FETCH_PRODUCT_SUCCEEDED:
