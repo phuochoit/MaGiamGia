@@ -15,7 +15,6 @@ const initialState = {
 };
 
 const categoryListDetailReducer = (state = initialState, action) => {
-    console.log('action---', action);
     switch (action.type) {
         case FETCH_LIST_CATEGORY:
             return { ...state, currentlySending: true }

@@ -8,7 +8,6 @@ import CategoryComponent from "../components/category/categoryComponent";
 import { FetchCategoryAction } from "../actions/actionCategory";
 
 const mapStateToProps = (state) => {
-    console.log('state', state );
     return {
         category: state.category,
         isConnected: state.isConnected.isConnected,

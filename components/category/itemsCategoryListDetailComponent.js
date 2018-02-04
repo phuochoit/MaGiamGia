@@ -9,7 +9,6 @@ import { CATEGORYDETAIL } from "../../values/screenName";
 class ItemsCategoryListDetailComponent extends Component {
     constructor(props) {
         super(props);
-        // console.log('this.props', this.props);
     }
     _onPressViewNow(){
         this.props.navigation.navigate(CATEGORYDETAIL, this.props.item);

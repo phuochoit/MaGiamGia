@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Linking, Alert, Image, TouchableOpacity, ScrollView} from 'react-native';
+import { Text, View, Linking, Alert, Image, TouchableOpacity} from 'react-native';
 import { isEmpty } from "lodash";
 import { Button } from "react-native-elements";
 //componet
@@ -34,11 +34,10 @@ class ProductDetailComponent extends Component {
 
     }
     render() {
-        console.log('this.prod', this.props.navigation);
         const { navigate, state} = this.props.navigation;
         let titleComponet = 'Chi Tiết Sản Phẩm';
         return (
-            <ScrollView style={[styles.wrapper]}>
+            <View style={[styles.wrapper]}>
                 <HeaderComponent iconLeft={true} title={titleComponet} navigation={this.props.navigation} />
                 <View style={styles.wrapper_detail_coupon}>
                     <View style={styles.header_detail_coupon}>
@@ -70,7 +69,7 @@ class ProductDetailComponent extends Component {
                     </View>
 
                 </View>
-            </ScrollView>
+            </View>
         );
     }
 }

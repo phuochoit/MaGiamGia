@@ -23,7 +23,6 @@ class topProductItems extends Component {
         Linking.openURL(this.props.item.aff_link).catch(err => console.error('An error occurred', err));
     }
     _onPressViewDetail(item){
-        console.log('_onPressViewDetail', item);
         this.props.navigation.navigate(HOMEDETAIL, item);
     }
     render() {

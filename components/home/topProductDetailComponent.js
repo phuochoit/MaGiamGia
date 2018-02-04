@@ -34,7 +34,6 @@ class TopProductDetailComponent extends Component {
 
     }
     render() {
-        console.log('this.prod', this.props.navigation);
         const { navigate, state} = this.props.navigation;
         let titleComponet = 'Chi Tiết Sản Phẩm';
         let strprice, strdiscount, price, discount, strCategoryName = null;

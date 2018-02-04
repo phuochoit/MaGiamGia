@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList} from 'react-native';
+import { isEmpty } from "lodash";
 // component
 import HeaderComponent from "../headerComponent";
 import ProductItems from "./productItems";
 import IsloadingComponent from "../isloading";
+import EmptyComponent from "../emptyComponent";
 //styles
 import { styles } from "../../assets/styles";
 
@@ -38,10 +40,19 @@ class ProductComponent extends Component {
             );
         }
         if (this.props.product.toast === 1){
-            viewMore = <Text>Đang Tải Dữ Liệu!</Text>;
+            viewMore = <Text style={{ textAlign: 'center', paddingVertical: 5}}>Đang Tải Dữ Liệu!</Text>;
         } else if (this.props.product.toast === 2){
             viewMore = null;
         }
+        if (isEmpty(this.props.product.product)) {
+            return (
+                <View style={[styles.wrapper]}>
+                    <HeaderComponent iconLeft={false} title="Sản Phẩm Bán Chạy" navigation={this.props.navigation} />
+                    <EmptyComponent message='Không Có Sản Phẩm Bán Chạy Nào!' />
+                </View>
+            );
+        }
+
         return (
             <View style={[styles.wrapper]}>
                 <HeaderComponent iconLeft={false} title="Sản Phẩm Bán Chạy" navigation={this.props.navigation} />

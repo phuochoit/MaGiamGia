@@ -8,7 +8,6 @@ import CategoryListDetailComponent from "../components/category/categoryListDeta
 import { FetchListCategoryAction, FetchTabListCategoryAction, FetchRefreShingTabCouponListAction} from "../actions/actionListDetailCategory";
 
 const mapStateToProps = (state) => {
-    console.log('state', state);
     return {
         categoryListDetail: state.categoryListDetail,
         isConnected: state.isConnected.isConnected,

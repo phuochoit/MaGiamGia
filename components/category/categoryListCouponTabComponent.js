@@ -30,7 +30,6 @@ class CategoryListCouponTabComponent extends Component {
     }
     
     render() {
-        console.log('render', this.props);
         if (isEmpty(this.props.categoryListDetail.categoryCouponList.coupon)) {
             return <EmptyComponent message='Không Có Chương Mã Giảm Giá Nào' />
         }

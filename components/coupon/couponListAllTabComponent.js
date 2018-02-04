@@ -33,7 +33,6 @@ class CouponListAllTabComponent extends Component {
 
     }
     render() {
-        console.log('this.props', this.props);
         if (!this.props.isConnected) {
             return (
                 <IsConnectedContainer iconLeft={false} title="" showHeader={true} />

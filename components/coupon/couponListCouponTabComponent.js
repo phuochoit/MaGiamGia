@@ -33,7 +33,7 @@ class CouponListCouponTabComponent extends Component {
     
     render() {
         if (isEmpty(this.props.couponList.couponList.coupon)) {
-            return <EmptyComponent message='Không Có Chương Mã Giảm Giá Nào' />
+            return <EmptyComponent message='Không Có Mã Giảm Giá Nào' />
         }
         return (
             <View style={[styles.wrapper]}>

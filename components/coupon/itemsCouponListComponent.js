@@ -9,7 +9,6 @@ import { COUPONDETAIL } from "../../values/screenName";
 class ItemsCouponListComponent extends Component {
     constructor(props) {
         super(props);
-        // console.log('this.props', this.props);
     }
     _onPressViewNow(){
         this.props.navigation.navigate(COUPONDETAIL, this.props.item)
