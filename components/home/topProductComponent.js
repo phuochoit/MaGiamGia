@@ -6,7 +6,8 @@ import TopProductItems from "./topProductItems";
 import IsloadingComponent from "../isloading";
 // Styles
 import {styles} from "../../assets/styles";
-
+// admob
+import { AdMobBannerFooter } from "../admob";
 class TopProductComponent extends Component {
     componentWillMount() {
         this.props.onFetchTopProduct();
@@ -28,7 +29,7 @@ class TopProductComponent extends Component {
                 <FlatList 
                     style={styles.mghorizontal}
                     ListHeaderComponent={() => { return (<View />); }} 
-                    ListFooterComponent={() => { return (<View/>);}}
+                    ListFooterComponent={() => { return (<AdMobBannerFooter bannerSize="banner"/>);}}
                     data={this.props.topProduct.product.data }
                     renderItem={({ item, index }) => {
                         return (

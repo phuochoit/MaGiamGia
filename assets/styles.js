@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions, Platform } from "react-native";
 
-const deviceHeight = Dimensions.get("window").height;
-const deviceWidth = Dimensions.get("window").width;
+export const deviceHeight = Dimensions.get("window").height;
+export const deviceWidth = Dimensions.get("window").width;
 const platform = Platform.OS;
 export const categoryBannerHeight = deviceHeight * 0.35;
 export const headerHight = Platform === 'ios' ? 70 : 70 - 24;
@@ -18,6 +18,9 @@ export const styles = StyleSheet.create({
     wrapper: {
         backgroundColor: '#fff',
         flex: 1
+    },
+    deviceHeight: {
+        height: deviceHeight
     },
     flex0: {
         flex: 0

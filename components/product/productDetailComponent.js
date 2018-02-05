@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, Linking, Alert, Image, TouchableOpacity} from 'react-native';
-import { isEmpty } from "lodash";
+import { Text, View, Linking, Alert, Image, TouchableOpacity, ScrollView} from 'react-native';
+import { isEmpty, isNull, isNumber } from "lodash";
 import { Button } from "react-native-elements";
 //componet
 import HeaderComponent from "../headerComponent";
@@ -9,7 +9,8 @@ import { styles, backgroundButton } from "../../assets/styles";
 
 //Container
 import IsConnectedContainer from "../../containers/isConnectedContainer";
-
+// admob
+import { AdMobBannerContent } from "../admob";
 class ProductDetailComponent extends Component {
     constructor(props) {
         super(props);
@@ -45,12 +46,23 @@ class ProductDetailComponent extends Component {
                 <IsConnectedContainer iconLeft={true} title={titleComponet} showHeader={true} navigation={this.props.navigation} />
             );
         }
+        if (state.params.discount > 0) {
+            discount = state.params.discount.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+            strdiscount = (<Text style={styles.product_txt_pice}>Giá Khuyến Mãi: <Text style={styles.product_txt_pice_bold}>{discount}</Text></Text>);
+        }
+        if (!isNull(state.params.price)) {
+            price = state.params.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+            strprice = (<Text style={styles.product_txt_pice}>Giá Chưa Khuyến Mãi: <Text style={styles.product_txt_pice_bold}>{price}</Text></Text>);
+        }
+        
         return (
-            <View style={[styles.wrapper]}>
+            <ScrollView style={[styles.wrapper]}>
                 <HeaderComponent iconLeft={true} title={titleComponet} navigation={this.props.navigation} />
                 <View style={styles.wrapper_detail_coupon}>
                     <View style={styles.header_detail_coupon}>
                         <Text style={styles.title_header_detail_coupon}>{state.params.name}</Text>
+                        {strprice}
+                        {strdiscount}
                     </View>
                     <View style={styles.content_detail_coupon}>
                         <TouchableOpacity onPress={this._onPressOpenAff.bind(this)} style={styles.touchableOpacity_content_detail_coupon}>
@@ -64,6 +76,7 @@ class ProductDetailComponent extends Component {
                                 onError={this._imageLoadingError.bind(this)}
                             />
                         </TouchableOpacity>
+                        <AdMobBannerContent bannerSize="mediumRectangle" />
                     </View>
                     <View style={styles.footer_detail_coupon}>
                         <Button
@@ -78,7 +91,7 @@ class ProductDetailComponent extends Component {
                     </View>
 
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }

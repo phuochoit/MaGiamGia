@@ -6,6 +6,9 @@ import TopProductComponent from "./topProductComponent";
 import OffersInformationsComponent from "./offersInformationsComponent";
 //Container
 import IsConnectedContainer  from "../../containers/isConnectedContainer";
+
+//admob
+import { AdMobBannerHeader } from "../admob";
 //style
 import { styles } from "../../assets/styles";
 class HomeComponent extends Component {
@@ -21,13 +24,14 @@ class HomeComponent extends Component {
             );
         }
         return (
-            <View style={[styles.wrapper]}>
+            <ScrollView style={[styles.wrapper]}>
                 <HeaderComponent iconLeft={false} title="Mã Giảm Giá" navigation={this.props.navigation}/>
-                <ScrollView style={styles.flex0}>
+                <View style={styles.flex0}>
                     <OffersInformationsComponent {...this.props} />
+                    <AdMobBannerHeader bannerSize="banner"/>
                     <TopProductComponent {...this.props}/>
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         );
     }
 }

@@ -5,6 +5,7 @@ import { Icon } from 'react-native-elements';
 //style
 import { styles, background} from "../assets/styles"
 
+import { AdMobBannerContent } from "./admob";
 class EmptyComponent extends Component {
     render() {
         return (
@@ -18,6 +19,7 @@ class EmptyComponent extends Component {
                     />
                     <Text style={styles.title_empty}> Oops! </Text>
                     <Text style={styles.message_empty}>{this.props.message}</Text>
+                    <AdMobBannerContent bannerSize="mediumRectangle"/>
                 </View>
             </View>
         );

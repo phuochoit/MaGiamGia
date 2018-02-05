@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, TouchableOpacity, Linking, Alert, Clipboard } from 'react-native';
+import { Text, View, Image, TouchableOpacity, Linking, Alert, Clipboard , ScrollView} from 'react-native';
 import { Button } from "react-native-elements";
 import { isEmpty } from "lodash";
 //componet
@@ -8,6 +8,9 @@ import HeaderComponent from "../headerComponent";
 import { styles, backgroundButton } from "../../assets/styles";
 //Container
 import IsConnectedContainer from "../../containers/isConnectedContainer";
+
+//admob
+import { AdMobBannerContent } from "../admob";
 
 class CouponListDetailComponent extends Component {
     constructor(props) {
@@ -59,7 +62,7 @@ class CouponListDetailComponent extends Component {
             textButtonCopy = "Copy Mã Giảm Giá";
         }
         return (
-            <View style={[styles.wrapper, styles.flex1]}>
+            <ScrollView style={[styles.wrapper, styles.flex1]}>
                 <HeaderComponent iconLeft={true} title={titleComponet} navigation={this.props.navigation} />
                 <View style={styles.wrapper_detail_coupon}>
                     <View style={styles.header_detail_coupon}>
@@ -77,6 +80,7 @@ class CouponListDetailComponent extends Component {
                                 onError={this._imageLoadingError.bind(this)}
                             />
                         </TouchableOpacity>
+                        <AdMobBannerContent bannerSize="mediumRectangle" />
                     </View>
                     <View style={styles.footer_detail_coupon}>
                         <Button
@@ -90,7 +94,7 @@ class CouponListDetailComponent extends Component {
                             title={textButtonCopy} />
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }

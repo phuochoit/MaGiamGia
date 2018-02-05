@@ -17,6 +17,7 @@ import IsConnectedContainer from "../../containers/isConnectedContainer";
 //styles
 import { styles, background, backgroundWhite } from "../../assets/styles";
 
+
 class CouponListComponent extends Component {
     constructor(props){
         super(props);
@@ -36,7 +37,6 @@ class CouponListComponent extends Component {
         return (
             <View style={[styles.wrapper, styles.flex1]}>
                 <HeaderComponent iconLeft={true} title={componentTitle} navigation={this.props.navigation}/>
-                
                 <ScrollableTabView
                     style={styles.wrapper_coupon_list}
                     initialPage={0}

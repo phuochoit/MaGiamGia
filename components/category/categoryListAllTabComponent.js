@@ -10,6 +10,9 @@ import EmptyComponent from "../emptyComponent";
 // container
 import IsConnectedContainer from "../../containers/isConnectedContainer";
 
+// admob
+import { AdMobBannerFooter, AdMobBannerHeader } from "../admob";
+
 // string
 import { ALL } from "../../values/strings";
 class CategoryListAllTabComponent extends Component {
@@ -44,8 +47,8 @@ class CategoryListAllTabComponent extends Component {
             <View style={[styles.wrapper]}>
                 <FlatList
                     style={[styles.mghorizontal, styles.mgtop]}
-                    ListHeaderComponent={() => { return (<View />); }}
-                    ListFooterComponent={() => { return (<View />); }}
+                    ListHeaderComponent={() => { return (<View style={{ marginBottom: 5 }}><AdMobBannerHeader bannerSize="banner" /></View>); }}
+                    ListFooterComponent={() => { return (<AdMobBannerFooter bannerSize="banner" />); }}
                     data={this.props.categoryListDetail.categoryCouponList.all}
                     renderItem={({ item, index }) => {
                         return (

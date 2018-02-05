@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Linking, Alert, Image, TouchableOpacity} from 'react-native';
+import { Text, View, Linking, Alert, Image, TouchableOpacity, ScrollView} from 'react-native';
 import { isEmpty, isNull, isNumber} from "lodash";
 import { Button } from "react-native-elements";
 //componet
@@ -8,6 +8,9 @@ import HeaderComponent from "../headerComponent";
 import { styles, backgroundButton } from "../../assets/styles";
 //Container
 import IsConnectedContainer from "../../containers/isConnectedContainer";
+
+//admob
+import { AdMobBannerContent } from "../admob";
 
 class TopProductDetailComponent extends Component {
     constructor(props) {
@@ -61,7 +64,7 @@ class TopProductDetailComponent extends Component {
             );
         }
         return (
-            <View style={[styles.wrapper]}>
+            <ScrollView style={[styles.wrapper]}>
                 <HeaderComponent iconLeft={true} title={titleComponet} navigation={this.props.navigation} />
                 <View style={styles.wrapper_detail_coupon}>
                     <View style={styles.header_detail_coupon}>
@@ -87,6 +90,7 @@ class TopProductDetailComponent extends Component {
                                 onError={this._imageLoadingError.bind(this)}
                             />
                         </TouchableOpacity>
+                        <AdMobBannerContent bannerSize="mediumRectangle"/>
                     </View>
                     <View style={styles.footer_detail_coupon}>
                         <Button
@@ -101,7 +105,7 @@ class TopProductDetailComponent extends Component {
                     </View>
 
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }

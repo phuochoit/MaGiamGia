@@ -11,6 +11,10 @@ import EmptyComponent from "../emptyComponent";
 
 // string
 import { ALL, COUPON } from "../../values/strings";
+
+// admob
+import { AdMobBannerFooter, AdMobBannerHeader } from "../admob";
+
 class CategoryListCouponTabComponent extends Component {
     constructor(props) {
         super(props);
@@ -37,8 +41,8 @@ class CategoryListCouponTabComponent extends Component {
             <View style={[styles.wrapper]}>
                 <FlatList
                     style={[styles.mghorizontal, styles.mgtop]}
-                    ListHeaderComponent={() => { return (<View />); }}
-                    ListFooterComponent={() => { return (<View />); }}
+                    ListHeaderComponent={() => { return (<View style={{ marginBottom: 5 }}><AdMobBannerHeader bannerSize="banner" /></View>); }}
+                    ListFooterComponent={() => { return (<AdMobBannerFooter bannerSize="banner" />); }}
                     data={this.props.categoryListDetail.categoryCouponList.coupon}
                     renderItem={({ item, index }) => {
                         return (

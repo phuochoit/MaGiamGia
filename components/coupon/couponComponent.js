@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, Alert , ScrollView} from 'react-native';
 
 // component
 import HeaderComponent from "../headerComponent";
@@ -13,6 +13,9 @@ import { styles } from "../../assets/styles";
 
 // screenName
 import { LISTCOUPON } from "../../values/screenName";
+
+// admob
+import { AdMobBannerFooter, AdMobBannerHeader } from "../admob";
 
 class ItemsCouponShop extends Component {
     _onPressGoTodeail(){
@@ -56,8 +59,9 @@ class CouponComponent extends Component {
         }
         return (
 
-            <View style={[styles.wrapper]}>
+            <ScrollView style={[styles.wrapper]}>
                 <HeaderComponent iconLeft={false} title="Chương Trình Khuyến Mãi" navigation={this.props.navigation}/>
+                <AdMobBannerHeader bannerSize="banner" />
                 <FlatList
                     style={[styles.mghorizontal, styles.mgtop]}
                     ListHeaderComponent={() => { return (<View />); }}
@@ -72,7 +76,8 @@ class CouponComponent extends Component {
                 horizontal={false}
                 numColumns={2}
                 />
-            </View>
+                <AdMobBannerFooter bannerSize="banner" />
+            </ScrollView>
         );
     }
 }

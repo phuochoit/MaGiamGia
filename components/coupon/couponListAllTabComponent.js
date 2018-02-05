@@ -12,6 +12,8 @@ import IsConnectedContainer from "../../containers/isConnectedContainer";
 
 // string
 import { ALL } from "../../values/strings";
+//admob
+import { AdMobBannerFooter, AdMobBannerHeader } from "../admob";
 class CouponListAllTabComponent extends Component {
     constructor(props) {
         super(props);
@@ -41,11 +43,11 @@ class CouponListAllTabComponent extends Component {
             return (<EmptyComponent message='Không Có Chương Trình Khuyến Mãi Nào' />);
         }
         return (
-            <View style={[styles.wrapper]}>
+            <View style={[styles.wrapper, styles.flex1]}>
                 <FlatList
                     style={[styles.mghorizontal, styles.mgtop]}
-                    ListHeaderComponent={() => { return (<View />); }}
-                    ListFooterComponent={() => { return (<View />); }}
+                    ListHeaderComponent={() => { return (<View style={{marginBottom:5}}><AdMobBannerHeader bannerSize="banner" /></View>); }}
+                    ListFooterComponent={() => { return (<AdMobBannerFooter bannerSize="banner" />); }}
                     data={this.props.couponList.couponList.all}
                     renderItem={({ item, index }) => {
                         return (

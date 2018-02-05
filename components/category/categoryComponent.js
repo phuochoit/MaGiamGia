@@ -12,8 +12,10 @@ import IsConnectedContainer from "../../containers/isConnectedContainer";
 //styles
 import { styles, categoryBannerHeight} from "../../assets/styles";
 
-//
+// screenName
 import { CATEGORYLISTDETAIL } from "../../values/screenName";
+// admob
+import { AdMobBannerFooter, AdMobBannerHeader } from "../admob";
 class CategoryComponent extends Component {
     constructor(props) {
         super(props);
@@ -51,8 +53,8 @@ class CategoryComponent extends Component {
                 <HeaderComponent iconLeft={false} title="Danh Mục Khuyến Mãi" navigation={this.props.navigation} />
                 <FlatList
                     style={[styles.mghorizontal, styles.mgtop]}
-                    ListHeaderComponent={() => { return (<View />); }}
-                    ListFooterComponent={() => { return (<View />); }}
+                    ListHeaderComponent={() => { return (<View style={{ marginBottom: 5 }}><AdMobBannerHeader bannerSize="banner" /></View>); }}
+                    ListFooterComponent={() => { return (<AdMobBannerFooter bannerSize="banner" />); }}
                     data={this.props.category.category}
                     renderItem={({ item, index }) => {
                         return (
