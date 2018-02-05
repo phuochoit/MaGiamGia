@@ -100,9 +100,9 @@ android {
     defaultConfig {
         applicationId "com.phuochoit.magiamgia"
         minSdkVersion 16
-        targetSdkVersion 22
-        versionCode 5
-        versionName "2.0.1"
+        targetSdkVersion 23
+        versionCode 6
+        versionName "2.0.2"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
