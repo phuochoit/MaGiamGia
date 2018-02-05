@@ -86,12 +86,6 @@ export default shops = [
         "merchant": "fptshop",
     },
     {
-        "id": 15,
-        "name": "Fptshop",
-        "image": "http://i.imgur.com/bzPdcrs.jpg",
-        "merchant": "fptshop",
-    },
-    {
         "id": 16,
         "name": "Vienthonga",
         "image": "https://static.accesstrade.vn/logos/vienthonga.png",
