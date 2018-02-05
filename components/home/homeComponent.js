@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View , ScrollView} from 'react-native';
+import { Text, View, ScrollView} from 'react-native';
 //component
 import HeaderComponent from "../headerComponent";
 import TopProductComponent from "./topProductComponent";
@@ -17,6 +17,14 @@ class HomeComponent extends Component {
         this.state = {};
         this.props.onfetchNetConnected();
     }
+    componentDidMount() {
+       
+    }
+
+    componentWillUnmount() {
+        
+    }
+    
     render() {
         if (!this.props.isConnected){
             return (

@@ -10,7 +10,7 @@ import {
 const BANNER_HEADER = 'ca-app-pub-1070789846238739/4166547433';
 const BANNER_FOOTER = 'ca-app-pub-1070789846238739/8765717123';
 const BANNER_CONTENT = 'ca-app-pub-1070789846238739/4133743797';
-const BANNER_FULL = 'ca-app-pub-1070789846238739/5166913425';
+export const BANNER_FULL = 'ca-app-pub-1070789846238739/5166913425';
 export class AdMobBannerHeader extends React.Component {
     render() {
         return (
