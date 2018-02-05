@@ -20,16 +20,15 @@ class ProductComponent extends Component {
             page: 1
         };
         this._onRefresh = this._onRefresh.bind(this);
-        this._onEndReached = this._onEndReached.bind(this);
         this.props.onfetchNetConnected();
     }
     componentWillMount() {
         this.props.onFetchProduct();
     }
-    _onEndReached(){
-        this.props.onFetchMoreProduct(this.state.page + 1);
-        this.setState({ page: this.state.page + 1});
-    }
+    // _onEndReached(){
+    //     this.props.onFetchMoreProduct(this.state.page + 1);
+    //     this.setState({ page: this.state.page + 1});
+    // }
     _onRefresh(){
         this.props.onFetchProduct();
         this.setState({ page: 1 });
@@ -78,8 +77,8 @@ class ProductComponent extends Component {
                         );
                     }}
                     keyExtractor={item => item.product_id}
-                    onEndReachedThreshold={0.1}
-                    onEndReached={this._onEndReached}
+                    // onEndReachedThreshold={0.1}
+                    // onEndReached={this._onEndReached}
                     onRefresh={this._onRefresh}
                     refreshing={this.props.product.currentlySending}
                 />
