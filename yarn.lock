@@ -3690,6 +3690,10 @@ react-native-elements@^0.19.0:
     opencollective "^1.0.3"
     prop-types "^15.5.8"
 
+react-native-exit-app-no-history@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-exit-app-no-history/-/react-native-exit-app-no-history-1.0.2.tgz#2ea57762eff95da58f7870f7ebecc0e5f1818097"
+
 react-native-scrollable-tab-view@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/react-native-scrollable-tab-view/-/react-native-scrollable-tab-view-0.8.0.tgz#5cb1fcfce07bf530a3c81ab51fc5071144edac5c"

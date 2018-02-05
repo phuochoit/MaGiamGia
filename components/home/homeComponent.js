@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView} from 'react-native';
+import { Text, View, ScrollView, BackHandler, Platform, Alert} from 'react-native';
+import RNExitApp from 'react-native-exit-app-no-history';
 //component
 import HeaderComponent from "../headerComponent";
 import TopProductComponent from "./topProductComponent";
@@ -18,13 +19,31 @@ class HomeComponent extends Component {
         this.props.onfetchNetConnected();
     }
     componentDidMount() {
-       
+        BackHandler.addEventListener('hardwareBackPress', this._backButtonPress.bind(this));
     }
 
     componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this._backButtonPress.bind(this));
         
     }
-    
+    _backButtonPress(){
+        if (this.props.navigation.state.routeName === 'HOME'){
+            Alert.alert(
+                'Thông Báo',
+                'Bạn Muốn Đóng Ứng Dụng!',
+                [
+                    { text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                    {
+                        text: 'Yes', onPress: () => {
+                            RNExitApp.exitApp();
+                        }
+                    },
+                ],
+                { cancelable: true },
+            );
+        }
+        return true;
+    }
     render() {
         if (!this.props.isConnected){
             return (
