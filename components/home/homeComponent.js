@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView} from 'react-native';
-import RNExitApp from 'react-native-exit-app-no-history';
 //component
 import HeaderComponent from "../headerComponent";
 import TopProductComponent from "./topProductComponent";

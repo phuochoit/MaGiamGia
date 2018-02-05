@@ -101,7 +101,7 @@ android {
         applicationId "com.phuochoit.magiamgia"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 7
+        versionCode 8
         versionName "2.0.3"
         ndk {
             abiFilters "armeabi-v7a", "x86"
