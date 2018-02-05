@@ -20,7 +20,8 @@ const mapDispatchToProps = (dispatch) => {
         onFetchProduct: () => {
             dispatch(FetchProductAction())
         },
-        onFetchMoreProduct: (offset) => {
+        
+        _onFetchMoreProduct: (offset) => {
             dispatch(FetchMoreProductAction(offset))
         },
         onfetchNetConnected: () => {

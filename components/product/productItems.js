@@ -8,6 +8,8 @@ import { styles } from "../../assets/styles";
 
 // screenName
 import { HOTPRODUCTDETAIL } from "../../values/screenName";
+//functions
+import { convert_money } from "../../values/functions";
 
 class ProductItems extends Component {
     constructor(props) {
@@ -29,11 +31,11 @@ class ProductItems extends Component {
         const { item } = this.props;
         let strprice,strdiscount, price, discount = null;
         if (item.discount > 0) {
-            discount = item.discount.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+            discount = convert_money(item.discount, 'VND');
             strdiscount = (<Text style={styles.product_txt_pice}>Giá Khuyến Mãi: <Text style={styles.product_txt_pice_bold}>{discount}</Text></Text>);
         }
         if (!isNull(item.price)) {
-            price = item.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+            price = convert_money(item.price, 'VND');
             strprice = (<Text style={styles.product_txt_pice}>Giá Chưa Khuyến Mãi: <Text style={styles.product_txt_pice_bold}>{price}</Text></Text>);
         }
         return (

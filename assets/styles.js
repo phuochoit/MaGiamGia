@@ -137,7 +137,8 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     product_txt_pice: {
-        color: TextColor2
+        color: TextColor2,
+        fontSize: 13
     },
     product_txt_pice_bold: {
         color: TextColor,

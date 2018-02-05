@@ -12,6 +12,9 @@ import IsConnectedContainer from "../../containers/isConnectedContainer";
 //admob
 import { AdMobBannerContent } from "../admob";
 
+//functions
+import { convert_money } from "../../values/functions";
+
 class TopProductDetailComponent extends Component {
     constructor(props) {
         super(props);
@@ -49,14 +52,14 @@ class TopProductDetailComponent extends Component {
             );
         }
         if (state.params.discount > 0) {
-            discount = state.params.discount.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+            discount = convert_money(state.params.discount, 'VND');
             strdiscount = (<Text style={styles.product_txt_pice}>Giá Khuyến Mãi: <Text style={styles.product_txt_pice_bold}>{discount}</Text></Text>);
         }
         if (!isNull(state.params.price)) {
-            price = state.params.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+            price = convert_money(state.params.price, 'VND');
             strprice = (<Text style={styles.product_txt_pice}>Giá Chưa Khuyến Mãi: <Text style={styles.product_txt_pice_bold}>{price}</Text></Text>);
         }
-        if (!isNull(state.params.category_name) && !isNumber(state.params.category_name)){
+        if (!isNull(state.params.category_name) && state.params.category_name != '1'){
             strCategoryName = (
                 <TouchableOpacity>
                     <Text style={styles.product_txt_pice}>Danh Mục Khuyến Mãi: <Text style={styles.product_txt_pice_bold}>{state.params.category_name}</Text></Text>
